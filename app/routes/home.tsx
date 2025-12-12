@@ -105,5 +105,8 @@ export default function Home() {
         {[1, 2, 3].map((item, key) => <CondoCard key={key} />)}
       </section>
     </div>
+
+
+    <section className="container-x min-h-[300px]"></section>
   </main>;
 }

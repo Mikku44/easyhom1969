@@ -8,8 +8,8 @@ const currentYear = new Date().getFullYear();
 export default function Footer() {
   return (
     // Set the entire footer background to the primary color
-    <footer className="w-full bg-[#14962a]">
-      <div className="max-w-6xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-4 lg:grid-cols-5 text-white">
+    <footer className="bg-gradient-to-br from-[#14962a] to-[#0f4019] w-full">
+      <div className="container-x px-6 py-12 grid gap-10 md:grid-cols-4 lg:grid-cols-5 text-white">
         
         {/* Brand - Focus on simple white text */}
         <div className="md:col-span-2">

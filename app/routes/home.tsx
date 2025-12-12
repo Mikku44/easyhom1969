@@ -3,6 +3,7 @@ import { NavLink } from "react-router";
 import type { Route } from "./+types/home";
 import { motion } from 'framer-motion';
 import CondoCard from "~/components/CondoCard";
+import ApplicationForm from "~/components/ApplicationForm";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -14,7 +15,10 @@ export function meta({ }: Route.MetaArgs) {
 export default function Home() {
   return <main className="">
 
+
+
     <section className="h-[120vh] overflow-hidden relative w-full flex ">
+
       <div className="absolute w-full h-full bg-linear-180 to-black from-black/30
       flex flex-col md:items-center px-6 justify-center 
       ">
@@ -67,6 +71,22 @@ export default function Home() {
     </section>
 
     <div className="bg-amber-950/20">
+
+      <section className="grid md:grid-cols-2 container-x py-10">
+        <div className="font-light h-full w-full max-w-[80%] space-y-2 flex flex-col justify-center">
+          <div className="text-2xl font-normal">
+            เงื่อนไขการรับบริการ
+          </div>
+          <div className="text-xl">
+            1.พนักงานประจำเงินเดือน 30,000 ขึ้นไป รวมหนี้ผ่อนทางเดียวได้คอนโดการันตีผู้เช่า
+          </div>
+          <div className="text-xl">
+            2.เจ้าของกิจการได้ Cash Back เงินคืน 1-3 ล้าน ไปลงทุนหมุนเวียนเสริมสภาพคล่องได้คอนโดการันตีผู้เช่าให้
+          </div>
+        </div>
+        <ApplicationForm className="w-full" />
+      </section>
+
       <section className="container-x min-h-screen pt-10">
         <div className="h-[32px]  overflow-clip mb-4">
           <motion.div
@@ -82,7 +102,7 @@ export default function Home() {
             className="text-2xl text-black/80 font-[300] ">โครงการเด่น</motion.div>
         </div>
         {/*  */}
-       {[1,2,3].map((item,key) => <CondoCard key={key} />)}
+        {[1, 2, 3].map((item, key) => <CondoCard key={key} />)}
       </section>
     </div>
   </main>;

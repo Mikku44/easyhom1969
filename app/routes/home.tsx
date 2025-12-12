@@ -42,7 +42,7 @@ export default function Home() {
             transition={{
               duration: 0.6
             }}
-            className="lg:text-6xl text-4xl text-white font-[300]">ซื้อบ้านปิดนี้ให้ก่อน แถมเงินเหลือ</motion.h2>
+            className="lg:text-6xl text-4xl text-white font-[300]">ซื้อบ้านปิดหนี้ให้ก่อน แถมเงินเหลือ</motion.h2>
         </div>
 
         <div className="font-light max-w-[500px] md:text-center text-lg mt-4 text-white/80">

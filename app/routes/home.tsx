@@ -4,6 +4,7 @@ import type { Route } from "./+types/home";
 import { motion } from 'framer-motion';
 import CondoCard from "~/components/CondoCard";
 import ApplicationForm from "~/components/ApplicationForm";
+import FAQSection from "~/components/FaQ";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -57,7 +58,7 @@ export default function Home() {
         {/* CTA */}
 
         <NavLink
-          to="#"
+          to="#register-form"
           className="btn-1 mt-4 py-4 hover:w-[240px] flex gap-2 group w-[230px] items-center text-center">
           <div className="">ลงทะเบียนตอนนี้</div>
           <div className="overflow-clip opacity-0 group-hover:opacity-100 duration-200
@@ -70,22 +71,24 @@ export default function Home() {
         alt="hero image" />
     </section>
 
-    <div className="bg-amber-950/20">
+    <div className="">
 
-      <section className="grid md:grid-cols-2 container-x py-10">
-        <div className="font-light h-full w-full max-w-[80%] space-y-2 flex flex-col justify-center">
-          <div className="text-2xl font-normal">
-            เงื่อนไขการรับบริการ
+      <div className="bg-amber-950/30">
+        <section className="grid md:grid-cols-2 gap-5 container-x py-10">
+          <div className="text-white font-light h-full w-full max-w-[80%] space-y-2 flex flex-col justify-center">
+            <div className="text-3xl font-medium text-black">
+              เงื่อนไขการรับบริการ
+            </div>
+            <div className="text-xl font-[200]">
+              1.พนักงานประจำเงินเดือน 30,000 ขึ้นไป รวมหนี้ผ่อนทางเดียวได้คอนโดการันตีผู้เช่า
+            </div>
+            <div className="text-xl font-[200]">
+              2.เจ้าของกิจการจดทะเบียนธุรกิจขั้นต่ำ1ปี มีการหมุนเวียนบัญชีธุรกิจ ประวัติการชำระปกติ
+            </div>
           </div>
-          <div className="text-xl">
-            1.พนักงานประจำเงินเดือน 30,000 ขึ้นไป รวมหนี้ผ่อนทางเดียวได้คอนโดการันตีผู้เช่า
-          </div>
-          <div className="text-xl">
-            2.เจ้าของกิจการได้ Cash Back เงินคืน 1-3 ล้าน ไปลงทุนหมุนเวียนเสริมสภาพคล่องได้คอนโดการันตีผู้เช่าให้
-          </div>
-        </div>
-        <ApplicationForm className="w-full" />
-      </section>
+          <ApplicationForm className="w-full" />
+        </section>
+      </div>
 
       <section className="container-x min-h-screen pt-10">
         <div className="h-[32px]  overflow-clip mb-4">
@@ -107,6 +110,13 @@ export default function Home() {
     </div>
 
 
-    <section className="container-x min-h-[300px]"></section>
+    <section className=" grid gap-2 min-h-[300px]">
+      <div className="w-full h-[400px]">
+        <img src="https://cdn-cms.pgimgs.com/property-review/2019/09/The-Cube-Loft-Srinakarin-Theparak_019.jpg"
+        className="w-full h-full object-cover"
+        alt="image" />
+      </div>
+      <FAQSection />
+    </section>
   </main>;
 }

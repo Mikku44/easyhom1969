@@ -24,8 +24,9 @@ export default function ApplicationForm({ className }: { className?: string }) {
 
   return (
     <form
+      id="register-form"
       onSubmit={onSubmit}
-      className={`${className} max-w-2xl mx-auto space-y-6 bg-white p-6 shadow rounded-xl border border-zinc-300`}
+      className={`${className} max-w-2xl mx-auto space-y-6 bg-white p-6 shadow rounded-3xl border border-zinc-300`}
     >
       <div className="grid grid-cols-2 gap-2">
 
@@ -39,7 +40,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
             type="text"
             value={form.phone}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-lg px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-3 py-2"
             placeholder="เบอร์โทร"
             required
           />
@@ -54,7 +55,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
             type="text"
             value={form.job}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-lg px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-3 py-2"
             placeholder="อาชีพ"
             required
           />
@@ -72,7 +73,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
             type="number"
             value={form.salary}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-lg px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-3 py-2"
             placeholder="เงินเดือน"
             required
           />
@@ -86,7 +87,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
             name="paymentStatus"
             value={form.paymentStatus}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-lg px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-3 py-2"
             required
           >
             <option value="">-- เลือกสถานะ --</option>
@@ -114,7 +115,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
             type="text"
             value={form.firstName}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-lg px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-3 py-2"
             placeholder="ชื่อ"
             required
           />
@@ -129,7 +130,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
             type="text"
             value={form.lastName}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-lg px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-3 py-2"
             placeholder="นามสกุล"
             required
           />
@@ -144,7 +145,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
           type="email"
           value={form.email}
           onChange={onChange}
-          className="w-full border border-zinc-300 rounded-lg px-3 py-2"
+          className="w-full border border-zinc-300 rounded-full px-3 py-2"
           placeholder="อีเมล์"
         />
       </div>
@@ -158,7 +159,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
           name="coBorrower"
           value={form.coBorrower}
           onChange={onChange}
-          className="w-full border border-zinc-300 rounded-lg px-3 py-2"
+          className="w-full border border-zinc-300 rounded-full px-3 py-2"
           required
         >
           <option value="">-- เลือกคำตอบ --</option>
@@ -170,7 +171,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
       {/* Submit */}
       <button
         type="submit"
-        className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800"
+        className="w-full bg-black text-white py-2 rounded-full hover:bg-gray-800"
       >
         ส่งข้อมูล
       </button>

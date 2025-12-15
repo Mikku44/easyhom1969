@@ -1,5 +1,5 @@
 import { FaArrowDown, FaArrowRight } from "react-icons/fa6";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import type { Route } from "./+types/home";
 import { motion } from 'framer-motion';
 import CondoCard from "~/components/CondoCard";
@@ -7,6 +7,7 @@ import ApplicationForm from "~/components/ApplicationForm";
 import FAQSection from "~/components/FaQ";
 import StepSection from "~/components/StepSection";
 import WhyChooseUsSection from "~/components/WhyUs";
+import BlogCard from "~/components/BlogCard";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -73,7 +74,7 @@ export default function Home() {
       </div>
       <img
         className="h-[140vh] w-full object-cover"
-        src="https://cdn.prod.website-files.com/64805be211766565d95bb26a/66277629a07548ceaaf8b369_190806_Scene002_.jpg"
+        src="/images/hero.jpg"
         alt="hero image" />
     </section>
 
@@ -99,8 +100,11 @@ export default function Home() {
 
     </div>
 
+
+    {/* HIGHTLIGHT PROJECT */}
+
     <section className="container-x min-h-screen pt-10">
-      <div className="h-[32px]  overflow-clip mb-4">
+      <div className="h-[38px] flex justify-between  overflow-clip mb-4">
         <motion.div
           initial={{
             y: 18, opacity: 0
@@ -111,7 +115,35 @@ export default function Home() {
           transition={{
             duration: 0.6
           }}
-          className="text-2xl text-black/80 font-[300] ">โครงการเด่น</motion.div>
+          className="text-2xl text-black/80 font-[300] ">
+          โครงการเด่น
+        </motion.div>
+
+
+        <Link
+          to='#'
+          className='group text-sm  animated-slide-bg rounded-full hover:text-white px-3 '
+        >
+          <span className='flex duration-200 text-(--primary-color) items-center gap-2 font-bold'>
+            ดูเพิ่มเติม
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              className='size-[36px]'
+              viewBox='0 0 24 24'
+            >
+              <path
+                fill='none'
+                stroke='currentColor'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M5 12h14m-4 4l4-4m-4-4l4 4'
+              />
+            </svg>
+          </span>
+        </Link>
       </div>
       {/*  */}
       <div className="grid md:grid-cols-2 gap-4">
@@ -122,7 +154,7 @@ export default function Home() {
 
     <section className=" grid gap-2 min-h-[300px]  pt-10">
       <div className="w-full h-[400px]">
-        <img src="https://cdn-cms.pgimgs.com/property-review/2019/09/The-Cube-Loft-Srinakarin-Theparak_019.jpg"
+        <img src="/images/The-Cube-Loft-Srinakarin-Theparak_019.jpg"
           className="w-full h-full object-cover"
           alt="image" />
       </div>
@@ -131,18 +163,94 @@ export default function Home() {
 
 
     <section className=" grid gap-2 min-h-[300px]  pt-10">
-      
+
       <WhyChooseUsSection />
     </section>
 
-    {/* gallery */}
+    {/* step */}
     <section className=" grid gap-2 min-h-[300px]">
-      <div className="w-full container-x flex  rounded-4xl h-[520px]">
-        <img src="https://condonayoo.com/wp-content/uploads/2019/10/Nue-Noble-Srinakarin-Lasalle-1.jpg"
+      <div className="w-full overflow-hidden container-x flex relative rounded-4xl h-[520px]">
+
+        <div className="absolute inset-0 w-full h-full flex flex-col items-baseline
+        p-10 justify-center gap-4
+        bg-linear-0 from-black/60 to-black/0">
+          <div className=" max-w-[40%] text-4xl text-white"> วางแผนดี มีบ้าน พร้อมเงินเหลือ ด้วยทีมมืออาชีพ</div>
+
+
+          {/* CTA */}
+          {/* <Link to="#" className="rounded-full bg-neutral-900 px-10 py-3 text-white
+                     hover:bg-neutral-800 transition">
+            ปรึกษาฟรีกับ EasyHom1969
+          </Link> */}
+           <NavLink
+          to="#"
+          className="rounded-full text-white py-4 px-8 justify-center
+           bg-neutral-900 flex gap-2 group items-center text-center">
+          <div className="">  ปรึกษาฟรีกับ EasyHom1969</div>
+          <div className="overflow-clip opacity-0 group-hover:opacity-100 duration-200
+          group-hover:translate-x-2 "><FaArrowRight /></div>
+        </NavLink>
+        </div>
+        <img src="/images/Nue-Noble-Srinakarin-Lasalle-1.jpg"
           className="w-full h-full object-cover rounded-4xl"
           alt="image" />
       </div>
+
+
       <StepSection />
+    </section>
+
+
+
+
+    {/*  */}
+
+    <section className="container-x min-h-screen py-10">
+      <div className="h-[38px] flex justify-between  overflow-clip mb-4">
+        <motion.div
+          initial={{
+            y: 18, opacity: 0
+          }}
+          whileInView={{
+            y: 0, opacity: 1
+          }}
+          transition={{
+            duration: 0.6
+          }}
+          className="text-2xl text-black/80 font-[300] ">
+          บทความที่น่าสนใจ
+        </motion.div>
+
+
+        <Link
+          to='#'
+          className='group text-sm  animated-slide-bg rounded-full hover:text-white px-3 '
+        >
+          <span className='flex duration-200 text-(--primary-color) items-center gap-2 font-bold'>
+            ดูเพิ่มเติม
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              className='size-[36px]'
+              viewBox='0 0 24 24'
+            >
+              <path
+                fill='none'
+                stroke='currentColor'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M5 12h14m-4 4l4-4m-4-4l4 4'
+              />
+            </svg>
+          </span>
+        </Link>
+      </div>
+      {/*  */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {[1, 2, 3].map((item, key) => <BlogCard key={key} />)}
+      </div>
     </section>
   </main>;
 }

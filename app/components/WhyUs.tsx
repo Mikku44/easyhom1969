@@ -66,18 +66,6 @@ export default function WhyChooseUsSection() {
         ))}
       </div>
 
-      {/* CTA */}
-      <div className="mt-20 text-center">
-        <p className="text-neutral-700 font-medium">
-          วางแผนดี มีบ้าน พร้อมเงินเหลือ ด้วยทีมมืออาชีพ
-        </p>
-        <button
-          className="mt-8 rounded-full bg-neutral-900 px-10 py-3 text-white
-                     hover:bg-neutral-800 transition"
-        >
-          ปรึกษาฟรีกับ EasyHom1969
-        </button>
-      </div>
     </section>
   );
 }

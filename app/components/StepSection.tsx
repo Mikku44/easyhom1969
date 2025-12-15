@@ -73,7 +73,7 @@ export default function StepSection() {
       </div>
 
       {/* Footer CTA */}
-      <div className="mt-16 text-center">
+      <div className="mt-16 text-center ">
         <p className="text-neutral-700 font-medium">
           ง่าย ครบ จบในที่เดียว พร้อมทีมที่ปรึกษามืออาชีพ
         </p>

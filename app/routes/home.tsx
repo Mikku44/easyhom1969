@@ -1,10 +1,12 @@
-import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowDown, FaArrowRight } from "react-icons/fa6";
 import { NavLink } from "react-router";
 import type { Route } from "./+types/home";
 import { motion } from 'framer-motion';
 import CondoCard from "~/components/CondoCard";
 import ApplicationForm from "~/components/ApplicationForm";
 import FAQSection from "~/components/FaQ";
+import StepSection from "~/components/StepSection";
+import WhyChooseUsSection from "~/components/WhyUs";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -18,8 +20,12 @@ export default function Home() {
 
 
 
-    <section className="h-[120vh] overflow-hidden relative w-full flex ">
-
+    <section className="h-[110vh] overflow-hidden relative w-full flex ">
+      <div className="w-full absolute bottom-20 flex items-center  justify-center z-10">
+        <a href="#learnmore" className="animate-bounce rounded-full p-2 border-2 border-white text-white mb-5">
+          <FaArrowDown className="size-8  " />
+        </a>
+      </div>
       <div className="absolute w-full h-full bg-linear-180 to-black from-black/30
       flex flex-col md:items-center px-6 justify-center 
       ">
@@ -67,11 +73,11 @@ export default function Home() {
       </div>
       <img
         className="h-[140vh] w-full object-cover"
-        src="https://pd.w.org/2023/02/47063eef73575d3e5.90809207.jpg"
+        src="https://cdn.prod.website-files.com/64805be211766565d95bb26a/66277629a07548ceaaf8b369_190806_Scene002_.jpg"
         alt="hero image" />
     </section>
 
-    <div className="">
+    <div id="learnmore" className="">
 
       <div className="bg-amber-950/30">
         <section className="grid md:grid-cols-2 gap-5 container-x py-10">
@@ -90,33 +96,53 @@ export default function Home() {
         </section>
       </div>
 
-      <section className="container-x min-h-screen pt-10">
-        <div className="h-[32px]  overflow-clip mb-4">
-          <motion.div
-            initial={{
-              y: 18, opacity: 0
-            }}
-            whileInView={{
-              y: 0, opacity: 1
-            }}
-            transition={{
-              duration: 0.6
-            }}
-            className="text-2xl text-black/80 font-[300] ">โครงการเด่น</motion.div>
-        </div>
-        {/*  */}
-        {[1, 2, 3].map((item, key) => <CondoCard key={key} />)}
-      </section>
+
     </div>
 
+    <section className="container-x min-h-screen pt-10">
+      <div className="h-[32px]  overflow-clip mb-4">
+        <motion.div
+          initial={{
+            y: 18, opacity: 0
+          }}
+          whileInView={{
+            y: 0, opacity: 1
+          }}
+          transition={{
+            duration: 0.6
+          }}
+          className="text-2xl text-black/80 font-[300] ">โครงการเด่น</motion.div>
+      </div>
+      {/*  */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {[1, 2, 3].map((item, key) => <CondoCard key={key} />)}
+      </div>
+    </section>
 
-    <section className=" grid gap-2 min-h-[300px]">
+
+    <section className=" grid gap-2 min-h-[300px]  pt-10">
       <div className="w-full h-[400px]">
         <img src="https://cdn-cms.pgimgs.com/property-review/2019/09/The-Cube-Loft-Srinakarin-Theparak_019.jpg"
-        className="w-full h-full object-cover"
-        alt="image" />
+          className="w-full h-full object-cover"
+          alt="image" />
       </div>
       <FAQSection />
+    </section>
+
+
+    <section className=" grid gap-2 min-h-[300px]  pt-10">
+      
+      <WhyChooseUsSection />
+    </section>
+
+    {/* gallery */}
+    <section className=" grid gap-2 min-h-[300px]">
+      <div className="w-full container-x flex  rounded-4xl h-[520px]">
+        <img src="https://condonayoo.com/wp-content/uploads/2019/10/Nue-Noble-Srinakarin-Lasalle-1.jpg"
+          className="w-full h-full object-cover rounded-4xl"
+          alt="image" />
+      </div>
+      <StepSection />
     </section>
   </main>;
 }

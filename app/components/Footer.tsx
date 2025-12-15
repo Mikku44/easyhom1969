@@ -1,3 +1,5 @@
+import { BiCalculator } from "react-icons/bi";
+import { PiPhoneCallBold, PiPhoneCallLight } from "react-icons/pi";
 import { Link } from "react-router";
 import { APP_NAME, CONTACT_LIST, MENU_APP } from "~/const/app";
 
@@ -8,30 +10,43 @@ const currentYear = new Date().getFullYear();
 export default function Footer() {
   return (
     // Set the entire footer background to the primary color
-    <footer className="bg-gradient-to-br from-[#14962a] to-[#0f4019] w-full">
+    
+    <footer className="bg-black  w-full">
       <div className="container-x px-6 py-12 grid gap-10 md:grid-cols-4 lg:grid-cols-5 text-white">
         
         {/* Brand - Focus on simple white text */}
         <div className="md:col-span-2">
-          <h3 className="font-bold text-xl">{APP_NAME}</h3>
-          <p className="text-sm text-gray-300 mt-3 leading-relaxed max-w-sm">
+          <h3 className="font-bold text-2xl">{APP_NAME}</h3>
+          <p className="text-lg text-gray-300 font-light mt-3 leading-relaxed max-w-sm">
             เราเชื่อว่าบ้านที่ดีเริ่มต้นจากการบริการที่จริงใจ 
             EasyHom1969 พร้อมดูแลคุณทุกขั้นตอน
           </p>
+
+          <div className="text-2xl flex gap-2 items-center mt-3 text-green-500">
+           <PiPhoneCallBold />
+            <a target="_blank" href="tel:021099625" className="">02-109-9625</a>
+          </div>
+
+          <div className="flex gap-2 font-light text-center 
+          justify-center hover:bg-white hover:text-black duration-200
+          py-2 border rounded-md w-fit px-5 items-center mt-3 ">
+            <BiCalculator className="size-7"/>
+            <a target="_blank" href="tel:021099625" className="">โปรแกรมคำนวณวงเงินกู้</a>
+          </div>
         </div>
 
         {/* Menu */}
         <div>
           {/* Section headings are muted white/gray for contrast */}
-          <h4 className="font-medium text-sm tracking-widest uppercase text-gray-200 mb-4">
+          <h4 className="font-medium text-xl tracking-widest uppercase text-gray-200 mb-4">
             เมนูหลัก
           </h4>
-          <ul className="space-y-3">
+          <ul className="space-y-3 mc-hd">
             {MENU_APP.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="nav-item">
                 <Link
                   // Links are white, hover is a light, contrasting accent color (or a brightened version of the primary)
-                  className="text-base text-white hover:text-green-300 transition duration-150"
+                  className="text-base font-light nav-lnk text-white/60 hover:text-white nav-lnk transition duration-150"
                   to={item.href}
                 >
                   {item.label}
@@ -43,22 +58,42 @@ export default function Footer() {
 
         {/* Contact */}
         <div className="lg:col-span-2">
-          <h4 className="font-medium text-sm tracking-widest uppercase text-gray-200 mb-4">
+          <h4 className="font-medium text-xl tracking-widest uppercase text-gray-200 mb-4">
             ติดต่อเรา
           </h4>
-          <ul className="space-y-3">
-            {CONTACT_LIST.map((item) => (
+          <ul className="space-y-3 mc-hd">
+                <li className="nav-item">
+                  <a
+                    href={""}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
+                  >
+                    นโยบายข้อมูลส่วนบุคคล
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    href={""}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
+                  >
+                    ข้อกำหนดในการใช้งาน
+                  </a>
+                </li>
+            {/* {CONTACT_LIST.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer" 
-                  className="text-base text-white hover:text-green-300 transition duration-150"
+                  className="text-base text-white/60 hover:text-white nav-lnk transition duration-150"
                 >
                   {item.label}
                 </a>
               </li>
-            ))}
+            ))} */}
           </ul>
         </div>
       </div>

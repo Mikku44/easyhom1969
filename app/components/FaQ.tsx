@@ -43,8 +43,8 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="max-w-3xl w-full mx-auto px-4 py-20">
-      <h2 className="text-3xl font-semibold text-center mb-12">
+    <section className="w-full grid md:grid-cols-2 container-x mx-auto px-4 py-20">
+      <h2 className="text-3xl w-full text-center mb-12">
         คำถามที่พบบ่อย
       </h2>
 

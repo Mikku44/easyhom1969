@@ -1,5 +1,5 @@
 import { FaArrowDown, FaArrowRight } from "react-icons/fa6";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLoaderData } from "react-router";
 import type { Route } from "./+types/home";
 import { motion } from 'framer-motion';
 import CondoCard from "~/components/CondoCard";
@@ -8,6 +8,7 @@ import FAQSection from "~/components/FaQ";
 import StepSection from "~/components/StepSection";
 import WhyChooseUsSection from "~/components/WhyUs";
 import BlogCard from "~/components/BlogCard";
+import { blogService } from "~/services/blogService";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -16,11 +17,27 @@ export function meta({ }: Route.MetaArgs) {
   ];
 }
 
+// Define the limit constant (good practice)
+const LIMIT = 4;
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const url = new URL(request.url);
+  const page = Number(url.searchParams.get("page") || 1);
+  const { blogs } = await blogService.getAll(LIMIT, page);
+  const hasMore = blogs.length === LIMIT;
+
+  
+  return {
+    blogs,
+    page,
+    hasMore,
+  };
+}
+
+
 export default function Home() {
+    const { blogs } = useLoaderData<typeof loader>();
   return <main className="">
-
-
-
     <section className="h-[110vh] overflow-hidden relative w-full flex ">
       <div className="w-full absolute bottom-20 flex items-center  justify-center z-10">
         <a href="#learnmore" className="animate-bounce rounded-full p-2 border-2 border-white text-white mb-5">
@@ -249,7 +266,7 @@ export default function Home() {
       </div>
       {/*  */}
       <div className="grid md:grid-cols-2 gap-4">
-        {[1, 2, 3].map((item, key) => <BlogCard key={key} />)}
+        {blogs.map((item, key) => <BlogCard blog={item} key={key} />)}
       </div>
     </section>
   </main>;

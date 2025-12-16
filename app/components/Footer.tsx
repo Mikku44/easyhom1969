@@ -47,7 +47,7 @@ export default function Footer() {
                 <Link
                   // Links are white, hover is a light, contrasting accent color (or a brightened version of the primary)
                   className="text-base font-light nav-lnk text-white/60 hover:text-white nav-lnk transition duration-150"
-                  to={item.href}
+                  to={item.href as any}
                 >
                   {item.label}
                 </Link>

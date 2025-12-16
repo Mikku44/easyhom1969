@@ -6,10 +6,10 @@ import Navbar from "~/components/Navbar";
 export default function Layout() {
   return (
     <main>
-        <Navbar />
-        <ContactInfo />
+        <Navbar key={1} />
+        <ContactInfo key={2} />
         <Outlet></Outlet>
-        <Footer />
+        <Footer key={3}/>
     </main>
   )
 }

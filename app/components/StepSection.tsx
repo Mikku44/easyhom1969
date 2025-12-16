@@ -56,7 +56,7 @@ export default function StepSection() {
             className="rounded-3xl border border-neutral-200 p-6
                        hover:border-neutral-300 transition"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-full
+            <div className="flex items-center justify-center w-12 h-12 rounded-full shadow-2xl
                             bg-neutral-900 text-white font-semibold mb-6">
               {item.step}
             </div>

@@ -1,12 +1,10 @@
 
 import { useScroll } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import { MENU_APP } from '~/const/app'
 import { BurgerButton, MobileDrawer } from './DrawerMenu';
 import { FaFacebook, FaInstagram, FaPhoneVolume } from 'react-icons/fa6';
-import { RiInstagramFill } from 'react-icons/ri';
-import { BsFillTelephoneFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 
 export default function Navbar() {
@@ -34,7 +32,7 @@ export default function Navbar() {
                 menu={MENU_APP as any}
             />
 
-            <header className={`w-full min-h-[58px] z-10 flex items-center flex-col
+            <header className={`w-full min-h-[58px] z-50 flex items-center flex-col
              fixed  duration-300 ${isScrollDown ? "bg-black/80 backdrop-blur-2xl  shadow" : ""} `}>
                 <div className={`${isScrollDown ? "h-0  border-white/0" : "h-[30px] bg-black/30 border-white/50"} duration-300 overflow-hidden 
                      text-white font-light  w-full border-b`}>
@@ -67,16 +65,18 @@ export default function Navbar() {
                     {/* logo */}
                     <div className="h-[54px] aspect-square flex items-center gap-2">
                         <BurgerButton open={open} onClick={() => setOpen(!open)} />
-                        <img
-                            src="/logo/logo.jpg"
-                            alt="Easy Hom 1969 logo"
-                            className='h-full w-full object-cover' />
+                        <Link to="/">
+                            <img
+                                src="/logo/logo.jpg"
+                                alt="Easy Hom 1969 logo"
+                                className='h-full w-full object-cover' />
+                        </Link>
                     </div>
                     {/* menu */}
                     <div className=" w-full justify-center text-[14px] nav-item text-white
                     font-light lg:flex hidden gap-3 col-span-9">
                         {MENU_APP.map((item) =>
-                            <NavLink to={item.href}
+                            <NavLink to={item.href as any}
                                 key={item.label}
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "px-2 pb-3 nav-lnk-active" : "px-2 pb-3 nav-lnk mix-blend-difference "

@@ -58,7 +58,7 @@ export default function BlogDetail({
     <main className="min-h-screen bg-gray-50 py-8">
       <div className="mb-8">
         <img
-          src={"https://condonayoo.com/wp-content/uploads/2019/08/The-Cube-Loft-Srinakarin-Theparak-1.jpg"}
+          src={blog?.images?.[0] ?? "https://condonayoo.com/wp-content/uploads/2019/08/The-Cube-Loft-Srinakarin-Theparak-1.jpg"}
           alt={blog.title}
           className="w-full -mt-10 h-[480px] object-cover "
         />

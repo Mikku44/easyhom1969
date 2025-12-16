@@ -46,7 +46,7 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-gray-50 pb-10">
       <section className="h-[500px] mb-5 overflow-hidden rounde-3xl">
-        <img src="https://cdn.prod.website-files.com/64805be211766565d95bb26a/6627616200652854524fc15c_190809_Scene001-p-2000.jpg"
+        <img src={"https://cdn.prod.website-files.com/64805be211766565d95bb26a/6627616200652854524fc15c_190809_Scene001-p-2000.jpg"}
           alt="hero image qualicication"
           className="w-full h-full object-cover" // Added object-cover for better image fit
         />

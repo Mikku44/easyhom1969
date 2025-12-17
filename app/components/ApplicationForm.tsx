@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 export default function ApplicationForm({ className }: { className?: string }) {
   const [form, setForm] = useState({
@@ -166,6 +167,13 @@ export default function ApplicationForm({ className }: { className?: string }) {
           <option value="yes">มี</option>
           <option value="no">ไม่มี</option>
         </select>
+      </div>
+
+
+      <div className="">
+        การใช้ข้อมูลเป็นไปตามนโยบายวัตถุประสงค์ในการเก็บข้อมูลส่วนบุคคลของบริษัทฯ ตาม<Link
+         className="underline text-amber-500"
+         to="/privacy-policy">เงื่อนไขความเป็นส่วนตัว</Link>
       </div>
 
       {/* Submit */}

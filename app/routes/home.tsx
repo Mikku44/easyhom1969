@@ -9,6 +9,7 @@ import StepSection from "~/components/StepSection";
 import WhyChooseUsSection from "~/components/WhyUs";
 import BlogCard from "~/components/BlogCard";
 import { blogService } from "~/services/blogService";
+import { ChevronRight } from "lucide-react";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -26,7 +27,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   const { blogs } = await blogService.getAll(LIMIT, page);
   const hasMore = blogs.length === LIMIT;
 
-  
+
   return {
     blogs,
     page,
@@ -36,7 +37,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 
 
 export default function Home() {
-    const { blogs } = useLoaderData<typeof loader>();
+  const { blogs } = useLoaderData<typeof loader>();
   return <main className="">
     <section className="h-[110vh] overflow-hidden relative w-full flex ">
       <div className="w-full absolute bottom-20 flex items-center  justify-center z-10">
@@ -97,9 +98,19 @@ export default function Home() {
 
     <div id="learnmore" className="">
 
-      <div className="bg-amber-950/30">
-        <section className="grid md:grid-cols-2 gap-5 container-x py-10">
-          <div className="text-white font-light h-full w-full max-w-[80%] space-y-2 flex flex-col justify-center">
+      <div className="bg-amber-950/30 relative overflow-hidden">
+        {/* <img src="/images/background.svg"
+          className="w-full h-full object-cover z-0 absolute"
+          alt="" /> */}
+        <section className="md:grid flex group flex-col-reverse  md:grid-cols-2 gap-5 bg- container-x py-10 relative z-1">
+          <div className="-mb-5 md:-mb-[115px] w-full absolute lg:right-[-10%] md:right-[-5%] bottom-0
+           pointer-events-none md:bottom-10 flex justify-end ">
+            <img src="/images/owner.png"
+              className="md:h-[500px] h-[350px] hover:opacity-0 duration-200 hover: "
+              alt="owner" />
+          </div>
+          <ApplicationForm className="w-full" />
+          <div className=" text-black/80 relative z-10 font-light h-full w-full max-w-[80%] space-y-2 flex flex-col justify-center">
             <div className="text-3xl font-medium text-black">
               เงื่อนไขการรับบริการ
             </div>
@@ -109,8 +120,10 @@ export default function Home() {
             <div className="text-xl font-[200]">
               2.เจ้าของกิจการจดทะเบียนธุรกิจขั้นต่ำ1ปี มีการหมุนเวียนบัญชีธุรกิจ ประวัติการชำระปกติ
             </div>
+
+
           </div>
-          <ApplicationForm className="w-full" />
+
         </section>
       </div>
 
@@ -164,7 +177,7 @@ export default function Home() {
       </div>
       {/*  */}
       <div className="grid md:grid-cols-2 gap-4">
-        {[1, 2, 3].map((item, key) => <CondoCard key={key} />)}
+        {[1, 2, 3, 4].map((item, key) => <CondoCard key={key} />)}
       </div>
     </section>
 
@@ -180,18 +193,80 @@ export default function Home() {
 
 
     <section className=" grid gap-2 min-h-[300px]  pt-10">
+      <div className="container-x w-full overflow-hidden rounded-2xl mx-auto h-[500px] relative">
+        <div className="absolute justify-center gap-5 md:justify-between md:flex-row flex-col
+         flex z-1 px-10 w-full h-full ">
+          <div className="  flex justify-center flex-col md:h-full">
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
 
+              whileInView={{
+                opacity: 1,
+                y: 0
+              }}
+
+              transition={{
+                duration: 0.6
+              }}
+              className="text-4xl max-w-[300px] text-white">ให้คำปรึกษาด้านการกู้อย่างเป็นระบบ</motion.div>
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0
+              }}
+
+              transition={{
+                duration: 0.6,
+                delay: 0.2
+              }}
+              className="text-xl font-light max-w-[300px] text-white/90">วิเคราะห์กู้บ้านเงินเหลือกับผู้เชี่ยวชาญ กู้ให้เหมาะกับแผนชีวิตของคุณ</motion.div>
+          </div>
+
+          <div className="w-fit  flex justify-center flex-col md:h-full">
+            <NavLink
+              className="btn flex items-center group"
+              to={"/contact"}>
+              สมัครเลย <ChevronRight className="duration-200 group-hover:translate-x-1" />
+            </NavLink>
+          </div>
+        </div>
+        <img src="/images/condo-cover.jpg"
+          className="h-full w-full absolute object-cover"
+          alt="image" />
+      </div>
       <WhyChooseUsSection />
     </section>
 
     {/* step */}
-    <section className=" grid gap-2 min-h-[300px]">
-      <div className="w-full overflow-hidden container-x flex relative rounded-4xl h-[520px]">
+    <section className=" grid gap-2 min-h-[300px] container-x">
+      <div className="w-full overflow-hidden  flex relative rounded-4xl h-[520px]">
 
         <div className="absolute inset-0 w-full h-full flex flex-col items-baseline
-        p-10 justify-center gap-4
-        bg-linear-0 from-black/60 to-black/0">
-          <div className=" max-w-[40%] text-4xl text-white"> วางแผนดี มีบ้าน พร้อมเงินเหลือ ด้วยทีมมืออาชีพ</div>
+        p-10 justify-center gap-4 
+        bg-linear-0 from-black/80 to-black/0">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 10
+            }}
+
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }}
+
+            transition={{
+              duration: 0.6
+            }}
+            className=" md:max-w-[40%] max-w-[70%] md:text-4xl text-3xl text-white"> วางแผนดี มีบ้านพร้อมเงินเหลือ ด้วยทีมมืออาชีพ</motion.div>
 
 
           {/* CTA */}
@@ -199,16 +274,16 @@ export default function Home() {
                      hover:bg-neutral-800 transition">
             ปรึกษาฟรีกับ EasyHom1969
           </Link> */}
-           <NavLink
-          to="#"
-          className="rounded-full text-white py-4 px-8 justify-center
+          <NavLink
+            to="/contact"
+            className="rounded-full text-white py-4 px-8 justify-center
            bg-neutral-900 flex gap-2 group items-center text-center">
-          <div className="">  ปรึกษาฟรีกับ EasyHom1969</div>
-          <div className="overflow-clip opacity-0 group-hover:opacity-100 duration-200
+            <div className="">  ปรึกษาฟรีกับ EasyHom1969</div>
+            <div className="overflow-clip opacity-0 group-hover:opacity-100 duration-200
           group-hover:translate-x-2 "><FaArrowRight /></div>
-        </NavLink>
+          </NavLink>
         </div>
-        <img src="/images/Nue-Noble-Srinakarin-Lasalle-1.jpg"
+        <img src="/images/condo-cover-1.jpg"
           className="w-full h-full object-cover rounded-4xl"
           alt="image" />
       </div>
@@ -222,7 +297,7 @@ export default function Home() {
 
     {/*  */}
 
-    <section className="container-x min-h-screen py-10">
+    <section className="container-x p-10">
       <div className="h-[38px] flex justify-between  overflow-clip mb-4">
         <motion.div
           initial={{
@@ -240,7 +315,7 @@ export default function Home() {
 
 
         <Link
-          to='#'
+          to='/blogs'
           className='group text-sm  animated-slide-bg rounded-full hover:text-white px-3 '
         >
           <span className='flex duration-200 text-(--primary-color) items-center gap-2 font-bold'>

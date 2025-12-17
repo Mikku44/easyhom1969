@@ -36,9 +36,13 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen ">
 
-      <section className="h-[500px] overflow-hidden rounde-3xl">
-        <img src="https://cdn.prod.website-files.com/64805be211766565d95bb26a/6627616200652854524fc15c_190809_Scene001-p-2000.jpg"
-          alt="hero image qualicication" />
+      <section className="h-[500px] overflow-hidden relative">
+        <div className="absolute inset-0 w-full h-full flex flex-col items-baseline
+        p-10 justify-center gap-4 
+        bg-linear-0 from-black/80 to-black/0"></div>
+
+        <img src="/images/contact-bg.jpg"
+          className="h-full w-full object-cover" alt="hero image qualicication" />
       </section>
       {/* HERO */}
       <section className="pt-32 pb-16 border-b border-white/10">

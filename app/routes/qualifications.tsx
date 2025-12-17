@@ -22,7 +22,7 @@ interface QualificationGroup {
 
 const QUALIFICATION_GROUPS: QualificationGroup[] = [
   {
-    img: "/images/LINE_ALBUM_Easyhom1969_251214_2.jpg",
+    img: "/images/banner (2).jpg",
     group: "พนักงานประจำ",
     subtitle: "เหมาะสำหรับผู้ที่ต้องการเงินก้อนเพื่อปิดหนี้ ลดภาระผ่อนรายเดือน",
     highlight: "เงินทอนโดยทั่วไปประมาณ 300,000 – 1,000,000 บาท",
@@ -50,7 +50,7 @@ const QUALIFICATION_GROUPS: QualificationGroup[] = [
     ],
   },
   {
-    img: "/images/LINE_ALBUM_Easyhom1969_251214_18.jpg",
+    img: "/images/banner (3).jpg",
     group: "เจ้าของธุรกิจ",
     subtitle: "เหมาะสำหรับผู้ประกอบการที่ต้องการเสริมสภาพคล่องและขยายธุรกิจ",
     highlight: "บางเคสสามารถทอนเงินได้สูงถึง 10 – 20 ล้านบาท",
@@ -84,7 +84,8 @@ export default function QualificationSection() {
     <main>
       <section className="h-[500px] overflow-hidden rounde-3xl">
         <img src="https://cdn.prod.website-files.com/64805be211766565d95bb26a/6627616200652854524fc15c_190809_Scene001-p-2000.jpg"
-          alt="hero image qualicication" />
+
+          className="h-full w-full object-cover" alt="hero image qualicication" />
       </section>
       <section className="max-w-5xl mx-auto px-4 py-24">
 

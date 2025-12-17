@@ -140,7 +140,7 @@ export default function BlogAddPage() {
             name="slug"
             type="text"
             value={form.slug}
-            readOnly
+             onChange={handleChange}
             className="w-full input rounded-sm px-3 py-2 bg-gray-100 text-gray-500 border"
             placeholder="Enter title to generate slug"
             required

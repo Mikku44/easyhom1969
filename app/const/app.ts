@@ -13,9 +13,7 @@ export const MENU_APP = [
     {
         href : "/services" , label : "บริการที่เข้ากับคุณ"
     },
-    {
-        // href : "/clients" , label : "ลูกค้าของเรา"
-    },
+    
     {
         href : "/blogs" , label : "บทความ"
     },

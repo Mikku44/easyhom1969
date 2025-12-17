@@ -1,0 +1,16 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1640 856" width="1640" height="856">
+	<defs>
+		<image  width="1640" height="856" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABmgAAANYAQMAAAD69fCRAAAAAXNSR0IB2cksfwAAAANQTFRF////p8QbyAAAA6tJREFUeJztzwEJADAMwLDPv+mbGDycRkE75yfzOmBVN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduLpxdePqxtWNqxtXN65uXN24unF14+rG1Y2rG1c3rm5c3bi6cXXj6sbVjasbVzeublzduC7opQNZfWfZ/QAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		.s0 { fill: #ff9d96 } 
+		.s1 { opacity: .71;fill: #02754a } 
+	</style>
+	<use id="Background" href="#img1" x="0" y="0"/>
+	<path id="&lt;Path&gt;" class="s0" d="m1488.52 771.76v276.76h-135.8v-276.76c0-77.73-63.23-140.96-140.96-140.96-77.72 0-140.96 63.23-140.96 140.96v276.76h-135.8v-276.76c0-152.86 123.92-276.76 276.76-276.76 152.85 0 276.76 123.9 276.76 276.76z"/>
+	<g id="Folder 1">
+		<path id="&lt;Path&gt; copy" class="s1" d="m306 737.83h-92.19l65.19-65.18-100.65-100.65-65.18 65.19v-92.19h-142.34v92.19l-65.18-65.19-100.65 100.65 65.19 65.18h-92.19v142.34h92.19l-65.19 65.18 100.65 100.65 65.18-65.19v92.19h142.34v-92.19l65.18 65.19 100.65-100.65-65.19-65.18h92.19z"/>
+		<path id="&lt;Path&gt; copy 6" class="s1" d="m1599.64 18.91h-54.94l38.85-38.84-59.97-59.98-38.85 38.85v-54.94h-84.82v54.94l-38.84-38.85-59.98 59.98 38.85 38.84h-54.94v84.82h54.94l-38.85 38.85 59.98 59.97 38.84-38.85v54.94h84.82v-54.94l38.85 38.85 59.97-59.97-38.85-38.85h54.94z"/>
+		<path id="&lt;Path&gt; copy 7" class="s1" d="m783.5-23.71h-71.85l50.81-50.81-78.44-78.44-50.81 50.81v-71.85h-110.92v71.85l-50.81-50.81-78.44 78.44 50.81 50.81h-71.85v110.92h71.85l-50.81 50.81 78.44 78.44 50.81-50.81v71.85h110.92v-71.85l50.81 50.81 78.44-78.44-50.81-50.81h71.85z"/>
+	</g>
+</svg>

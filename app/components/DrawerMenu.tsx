@@ -28,7 +28,7 @@ export function MobileDrawer({ open, onClose, menu }: MobileDrawerProps) {
 
             {/* Drawer */}
             <aside
-                className={`fixed left-0 top-0 z-50 h-full w-[80%] max-w-sm
+                className={`fixed left-0 top-0 z-99 h-full w-[80%] max-w-sm
           bg-white p-6 transition-transform duration-300
           ${open ? "-translate-x-0" : "-translate-x-full"}`}
             >

@@ -65,7 +65,7 @@ export default function Navbar() {
                     {/* logo */}
                     <div className="h-[54px] aspect-square flex items-center gap-2">
                         <BurgerButton open={open} onClick={() => setOpen(!open)} />
-                        <Link to="/">
+                        <Link className='min-w-8' to="/">
                             <img
                                 src="/logo/logo.jpg"
                                 alt="Easy Hom 1969 logo"

@@ -100,7 +100,7 @@ export default function Footer() {
 
       {/* Bottom bar - Separated by a thin line of lighter green/white */}
       <div className="border-t border-white/10 py-4 text-center text-xs text-gray-400">
-        © {currentYear} {APP_NAME}. All rights reserved.
+        © {currentYear} EASY HOM. 1969 CO., LTD. All rights reserved.
       </div>
     </footer>
   );

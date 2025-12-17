@@ -25,5 +25,5 @@ export const MENU_APP = [
 export const CONTACT_LIST = [
     { href : "mailto:easyhome1969@gmail.com" , label : "easyhome1969@gmail.com"},
     { href : "tel:021099625" , label : "02 109 9625"},
-    { href : "https://maps.app.goo.gl/SPv2skUq6jBPChaBA" , label : "92/5 อาคารสาธรธานี 2 ชั้นที่ 2 ถนนสาทรเหนือ สีลม เขตบางรัก กรุงเทพมหานคร"},
+    { href : "https://maps.app.goo.gl/SPv2skUq6jBPChaBA" , label : "92/5 อาคารสาธรธานี 2 ชั้นที่ 3 ถนนสาทรเหนือ สีลม เขตบางรัก กรุงเทพมหานคร"},
 ]

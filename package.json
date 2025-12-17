@@ -9,6 +9,7 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@base-ui/react": "^1.0.0",
     "@react-router/node": "7.10.1",
     "@react-router/serve": "7.10.1",
     "firebase": "^12.6.0",

@@ -51,7 +51,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
           <label className="block text-sm font-medium mb-1">
             อาชีพ <span className="text-red-500">*</span>
           </label>
-          <input
+          {/* <input
             name="job"
             type="text"
             value={form.job}
@@ -59,7 +59,19 @@ export default function ApplicationForm({ className }: { className?: string }) {
             className="w-full border border-zinc-300 rounded-full px-3 py-2"
             placeholder="อาชีพ"
             required
-          />
+          /> */}
+          <select
+            name="job"
+            value={form.job}
+            onChange={onChange}
+            className="w-full border border-zinc-300 rounded-full px-3 py-2"
+            required
+          >
+            <option value="">-- เลือกอาชีพ --</option>
+            <option value="พนักงานประจำ">พนักงานประจำ</option>
+            <option value="เจ้าของกิจการ">เจ้าของกิจการ</option>
+
+          </select>
         </div>
       </div>
 
@@ -67,15 +79,20 @@ export default function ApplicationForm({ className }: { className?: string }) {
         {/* Salary */}
         <div>
           <label className="block text-sm font-medium mb-1">
-            เงินเดือน รับรวมในสลิป เท่าไหร่ <span className="text-red-500">*</span>
+            {form.job == "เจ้าของกิจการ" ?
+              "เงินหมุนเวียนบัญชีต่อเดือนเท่าไหร่"
+              : "เงินเดือน รับรวมในสลิป เท่าไหร่"} <span className="text-red-500">*</span>
           </label>
           <input
+
             name="salary"
             type="number"
             value={form.salary}
             onChange={onChange}
             className="w-full border border-zinc-300 rounded-full px-3 py-2"
-            placeholder="เงินเดือน"
+            placeholder={form.job == "เจ้าของกิจการ" ?
+              "เงินหมุนเวียนบัญชีต่อเดือน"
+              : "เงินเดือน "}
             required
           />
         </div>
@@ -172,8 +189,8 @@ export default function ApplicationForm({ className }: { className?: string }) {
 
       <div className="">
         การใช้ข้อมูลเป็นไปตามนโยบายวัตถุประสงค์ในการเก็บข้อมูลส่วนบุคคลของบริษัทฯ ตาม<Link
-         className="underline text-amber-500"
-         to="/privacy-policy">เงื่อนไขความเป็นส่วนตัว</Link>
+          className="underline text-amber-500"
+          to="/privacy-policy">เงื่อนไขความเป็นส่วนตัว</Link>
       </div>
 
       {/* Submit */}

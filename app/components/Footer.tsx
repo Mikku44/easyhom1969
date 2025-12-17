@@ -4,35 +4,30 @@ import { Link } from "react-router";
 import { APP_NAME, CONTACT_LIST, MENU_APP } from "~/const/app";
 
 // Define the custom primary color
-const PRIMARY_BG_COLOR = "#14962a"; 
+const PRIMARY_BG_COLOR = "#14962a";
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
     // Set the entire footer background to the primary color
-    
+
     <footer className="bg-black  w-full">
-      <div className="container-x px-6 py-12 grid gap-10 md:grid-cols-4 lg:grid-cols-5 text-white">
-        
+      <div className="container-x px-6 py-12 grid gap-10 lg:grid-cols-5 text-white">
+
         {/* Brand - Focus on simple white text */}
         <div className="md:col-span-2">
           <h3 className="font-bold text-2xl">{APP_NAME}</h3>
           <p className="text-lg text-gray-300 font-light mt-3 leading-relaxed max-w-sm">
-            เราเชื่อว่าบ้านที่ดีเริ่มต้นจากการบริการที่จริงใจ 
+            เราเชื่อว่าบ้านที่ดีเริ่มต้นจากการบริการที่จริงใจ
             EasyHom1969 พร้อมดูแลคุณทุกขั้นตอน
           </p>
 
           <div className="text-2xl flex gap-2 items-center mt-3 text-green-500">
-           <PiPhoneCallBold />
+            <PiPhoneCallBold />
             <a target="_blank" href="tel:021099625" className="">02-109-9625</a>
           </div>
 
-          <div className="flex gap-2 font-light text-center 
-          justify-center hover:bg-white hover:text-black duration-200
-          py-2 border rounded-md w-fit px-5 items-center mt-3 ">
-            <BiCalculator className="size-7"/>
-            <a target="_blank" href="tel:021099625" className="">โปรแกรมคำนวณวงเงินกู้</a>
-          </div>
+
         </div>
 
         {/* Menu */}
@@ -57,31 +52,31 @@ export default function Footer() {
         </div>
 
         {/* Contact */}
-        <div className="lg:col-span-2">
+        <div className="">
           <h4 className="font-medium text-xl tracking-widest uppercase text-gray-200 mb-4">
             ติดต่อเรา
           </h4>
           <ul className="space-y-3 mc-hd">
-                <li className="nav-item">
-                  <a
-                    href={""}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
-                  >
-                    นโยบายข้อมูลส่วนบุคคล
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    href={""}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
-                  >
-                    ข้อกำหนดในการใช้งาน
-                  </a>
-                </li>
+            <li className="nav-item">
+              <a
+                href={""}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
+              >
+                นโยบายข้อมูลส่วนบุคคล
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                href={""}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
+              >
+                ข้อกำหนดในการใช้งาน
+              </a>
+            </li>
             {/* {CONTACT_LIST.map((item) => (
               <li key={item.href}>
                 <a
@@ -95,7 +90,19 @@ export default function Footer() {
               </li>
             ))} */}
           </ul>
+
+
         </div>
+
+        <div className="flex gap-2 font-light text-center h-fit
+          bg-linear-0 from-indigo-400 to-indigo-900
+          justify-center py-4 hover:text-black duration-200
+          rounded-xl w-fit px-8 items-center mt-3 ">
+         
+          <a target="_blank" href="tel:021099625" className="">โปรแกรมคำนวณวงเงินกู้</a>
+        </div>
+
+
       </div>
 
       {/* Bottom bar - Separated by a thin line of lighter green/white */}

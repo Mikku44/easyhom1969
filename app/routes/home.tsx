@@ -10,6 +10,7 @@ import WhyChooseUsSection from "~/components/WhyUs";
 import BlogCard from "~/components/BlogCard";
 import { blogService } from "~/services/blogService";
 import { ChevronRight } from "lucide-react";
+import { HIGHLIGHT_PROJECTS } from "~/const/app";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -103,13 +104,22 @@ export default function Home() {
           className="w-full h-full object-cover z-0 absolute"
           alt="" /> */}
         <section className="md:grid flex group flex-col-reverse  md:grid-cols-2 gap-5 bg- container-x py-10 relative z-1">
-          <div className="-mb-5 md:-mb-[115px] w-full absolute lg:right-[-10%] md:right-[-5%] bottom-0
+          <div className="-mb-5 md:opacity-100 opacity-0 duration-200 md:-mb-[115px] w-full absolute lg:right-[-10%] md:right-[-5%] bottom-0
            pointer-events-none md:bottom-10 flex justify-end ">
             <img src="/images/owner.png"
               className="md:h-[500px] h-[350px] hover:opacity-0 duration-200 hover: "
               alt="owner" />
           </div>
-          <ApplicationForm className="w-full" />
+
+
+          <div className=" flex flex-col items-end">
+            <div className="md:hidden h-[250px] -mr-5 -mt-16">
+              <img src="/images/owner.png"
+                className="md:h-[500px] h-[350px] w-fit hover:opacity-0 duration-200 hover: "
+                alt="owner" />
+            </div>
+            <ApplicationForm className="w-full" />
+          </div>
           <div className=" text-black/80 relative z-10 font-light h-full w-full max-w-[80%] space-y-2 flex flex-col justify-center">
             <div className="text-3xl font-medium text-black">
               เงื่อนไขการรับบริการ
@@ -120,8 +130,6 @@ export default function Home() {
             <div className="text-xl font-[200]">
               2.เจ้าของกิจการจดทะเบียนธุรกิจขั้นต่ำ1ปี มีการหมุนเวียนบัญชีธุรกิจ ประวัติการชำระปกติ
             </div>
-
-
           </div>
 
         </section>
@@ -150,7 +158,7 @@ export default function Home() {
         </motion.div>
 
 
-        <Link
+        {/* <Link
           to='#'
           className='group text-sm  animated-slide-bg rounded-full hover:text-white px-3 '
         >
@@ -173,11 +181,11 @@ export default function Home() {
               />
             </svg>
           </span>
-        </Link>
+        </Link> */}
       </div>
       {/*  */}
       <div className="grid md:grid-cols-2 gap-4">
-        {[1, 2, 3, 4].map((item, key) => <CondoCard key={key} />)}
+        {HIGHLIGHT_PROJECTS.map((item, key) => <CondoCard {...item} key={key} />)}
       </div>
     </section>
 

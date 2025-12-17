@@ -1,11 +1,28 @@
 import { motion } from 'framer-motion';
 
-export default function CondoCard() {
+interface CondoCardProps {
+    id : number;
+    title : string;
+    image : string;
+    description : string;
+    price : string;
+    location : string;
+}
+
+export default function CondoCard(
+ {
+    image,
+    title,
+    description,
+    price,
+    location
+ } : CondoCardProps
+) {
     return (
         <div className='w-full border  border-zinc-200 rounded-md min-h-[350px] group grid gap-5 md:grid-cols-2'>
             <section className="flex flex-col justify-between px-5 py-10 ">
                 <div className="">
-                    <div className="lg:h-[42px]  overflow-clip mb-4">
+                    <div className="  overflow-clip mb-4">
                         <motion.div
                             initial={{
                                 y: 18, opacity: 0
@@ -16,7 +33,7 @@ export default function CondoCard() {
                             transition={{
                                 duration: 0.4
                             }}
-                            className="text-5xl   ">The Cube Loft Srinakarin
+                            className="text-2xl line-clamp-2 ">{title || "ไม่มีหัวข้อ"}
                         </motion.div>
                     </div>
                     <motion.div
@@ -29,19 +46,17 @@ export default function CondoCard() {
                         transition={{
                             duration: 0.4
                         }}
-                        className=" italic font-[300] line-clamp-3">คอนโดสไตล์ Retro Loft ที่ผสมผสานระหว่างความ Classic และความ Modern
-                        เข้าด้วยกันอย่างลงตัว โดยมีการตกแต่งห้องรูปแบบ Loft ซึ่งเน้นสร้างความต่อเนื่องของพื้นที่ด้วยห้องที่กว้าง เพดานสูง
-                        และประตูหน้าต่างขนาดใหญ่ ตกแต่งด้วยวัสดุที่เน้นการโชว์ผิวสัมผัส ตอบโจทย์ทุกรูปแบบไลฟ์ไสตล์คนรุ่นใหม่
+                        className=" italic font-[300] line-clamp-3">{description || "ไม่มีคำอธิบาย"}
                     </motion.div>
                 </div>
 
                 {/* bottom */}
                 <div className="">
                     <div className="text-xl  font-[300]">
-                        2.xx ล้านบาท
+                        {price || "ไม่ระบุราคา"}
                     </div>
                     <div className="text-sm text-black/80 font-[300]">
-                        268 196 Samrong Nuea, Mueang Samut Prakan District, Samut Prakan 10270
+                        {location || "ไม่ระบุสถานที่"}
                     </div>
                 </div>
             </section>
@@ -51,7 +66,7 @@ export default function CondoCard() {
             <div className="bg-black h-full w-full overflow-hidden">
                 <img
                     className='w-full h-full object-cover group-hover:scale-110 duration-200'
-                    src="https://condonayoo.com/wp-content/uploads/2019/08/The-Cube-Loft-Srinakarin-Theparak-1.jpg"
+                    src={image || "https://condonayoo.com/wp-content/uploads/2019/08/The-Cube-Loft-Srinakarin-Theparak-1.jpg"}
                     alt="condo" />
             </div>
 

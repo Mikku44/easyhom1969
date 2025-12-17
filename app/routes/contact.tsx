@@ -27,7 +27,7 @@ export const CONTACT_LIST = [
   {
     href: "https://maps.app.goo.gl/SPv2skUq6jBPChaBA",
     label:
-      "92/5 อาคารสาธรธานี 2 ชั้นที่ 2 ถนนสาทรเหนือ สีลม เขตบางรัก กรุงเทพมหานคร",
+      "92/5 อาคารสาธรธานี 2 ชั้นที่ 3 ถนนสาทรเหนือ สีลม เขตบางรัก กรุงเทพมหานคร",
     icon: <MdLocationOn />,
   },
 ];

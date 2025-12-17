@@ -2,7 +2,7 @@ import { blogService } from "~/services/blogService";
 import type { Route } from "./+types/home";
 import BlogCard from "~/components/BlogCard";
 import { useLoaderData, Link } from "react-router"; // Import Link for navigation
-
+import {motion} from "framer-motion";
 // Define the limit constant (good practice)
 const LIMIT = 4;
 
@@ -12,7 +12,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   const { blogs } = await blogService.getAll(LIMIT, page);
   const hasMore = blogs.length === LIMIT;
 
-  
+
   return {
     blogs,
     page,
@@ -45,22 +45,51 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 pb-10">
-      <section className="h-[500px] mb-5 overflow-hidden rounde-3xl">
-        <img src={"https://cdn.prod.website-files.com/64805be211766565d95bb26a/6627616200652854524fc15c_190809_Scene001-p-2000.jpg"}
+      <section className="h-[500px] mb-5 overflow-hidden rounde-3xl relative">
+
+        <div className="absolute inset-0 w-full h-full flex flex-col items-baseline
+        p-10 justify-end gap-4 
+        bg-linear-0 from-black/80 to-black/0">
+          <div className="lg:h-[62px] w-full mx-auto max-w-5xl overflow-clip">
+            <motion.h1
+              initial={{
+                y: 32, opacity: 0
+              }}
+              whileInView={{
+                y: 0, opacity: 1
+              }}
+              transition={{
+                duration: 0.6
+              }}
+              className="lg:text-5xl md:text-3xl text-2xl text-white font-[300] ">
+              Easy Hom 1969 - บทความและสาระน่ารู้
+            </motion.h1>
+          </div>
+          <div className="lg:h-[62px] w-full mx-auto max-w-5xl overflow-clip">
+            <motion.div
+              initial={{
+                y: 32, opacity: 0
+              }}
+              whileInView={{
+                y: 0, opacity: 1
+              }}
+              transition={{
+                duration: 0.6
+              }}
+              className=" text-xl max-w-3xl text-white/90 font-[300] mb-4">
+              สาระน่ารู้ และเกร็ดเล็กเกร็ดน้อยสำหรับผู้อยากกู้เช่าบ้าน และคอนโดเงินเหลือ
+            </motion.div>
+          </div>
+        </div>
+
+        <img src={"/images/cover-blog.jpg"}
           className="h-full w-full object-cover" alt="hero image qualicication"
-          className="w-full h-full object-cover" // Added object-cover for better image fit
+        // Added object-cover for better image fit
         />
       </section>
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header with New Title and Description */}
-        <header className="mb-10 text-center">
-          <h1 className="text-4xl font-extrabold mb-4 text-gray-900">
-            Easy Hom 1969 - บทความและสาระน่ารู้
-          </h1>
-          <p className="text-gray-600 max-w-4xl mx-auto px-4">
-            Easy Hom 1969 คือบริการเกี่ยวกับการเงินเพื่อที่อยู่อาศัยแบบครบวงจร: กู้บ้านเงินเหลือ, คอนโดเงินเหลือ, ซื้อบ้านปิดหนี้ให้ก่อนแถมเงินเหลือ, พร้อมบริการคอนโดเงินเหลือ การันตีผู้เช่า (One stop service) ดูให้ครบจบที่เดียว ไม่ว่าคุณจะเป็นพนักงานเงินเดือน หรือ เจ้าของธุรกิจ เราช่วยเสริมสภาพคล่องพร้อมได้คอนโดการันตีผู้เช่า
-          </p>
-        </header>
+        
 
         {/* Grid of Cards */}
         {blogs.length === 0 ? (
@@ -71,8 +100,8 @@ export default function BlogPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 items-start gap-6">
             {blogs.map((blog, i) => (
               <BlogCard
-               blog={blog} 
-               key={i} // Assuming 'blog' prop needs to be passed
+                blog={blog}
+                key={i} // Assuming 'blog' prop needs to be passed
               />
             ))}
           </div>
@@ -94,7 +123,7 @@ export default function BlogPage() {
           <span className="px-3 py-1 text-base font-semibold text-gray-700">
             หน้าที่ {page}
           </span>
-          
+
           {/* Next Button */}
           {hasMore && (
             <Link

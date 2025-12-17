@@ -10,6 +10,7 @@ export default [
         route("/blogs", "routes/blogs.tsx"),
         route("/blogs/:slug", "routes/slug/blog.tsx"),
         route("/contact", "routes/contact.tsx"),
+        route("/condo-loan-calculator", "routes/estimator.tsx"),
 
 
 

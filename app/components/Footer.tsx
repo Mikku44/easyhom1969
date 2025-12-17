@@ -99,7 +99,7 @@ export default function Footer() {
           justify-center py-4 hover:text-black duration-200
           rounded-xl w-fit px-8 items-center mt-3 ">
          
-          <a target="_blank" href="tel:021099625" className="">โปรแกรมคำนวณวงเงินกู้</a>
+          <a target="_blank" href="/condo-loan-calculator" className="">โปรแกรมคำนวณวงเงินกู้</a>
         </div>
 
 

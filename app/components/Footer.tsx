@@ -15,7 +15,13 @@ export default function Footer() {
       <div className="container-x px-6 py-12 grid gap-10 lg:grid-cols-5 text-white">
 
         {/* Brand - Focus on simple white text */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 grid">
+          <Link className=' w-[150px] ' to="/">
+            <img
+              src="/logo/easyhomlogo.svg"
+              alt="Easy Hom 1969 logo"
+              className=' w-28' />
+          </Link>
           <h3 className="font-bold text-2xl">{APP_NAME}</h3>
           <p className="text-lg text-gray-300 font-light mt-3 leading-relaxed max-w-sm">
             เราเชื่อว่าบ้านที่ดีเริ่มต้นจากการบริการที่จริงใจ
@@ -24,7 +30,7 @@ export default function Footer() {
 
           <div className="text-2xl flex gap-2 items-center mt-3 text-green-500">
             <PiPhoneCallBold />
-            <a target="_blank" href="tel:021099625" className="">02-109-9625</a>
+            <a target="_blank" href="tel:0657479789" className="">065-747-r9789</a>
           </div>
 
 
@@ -59,7 +65,7 @@ export default function Footer() {
           <ul className="space-y-3 mc-hd">
             <li className="nav-item">
               <a
-                href={""}
+                href={"/privacy-policy"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
@@ -69,7 +75,7 @@ export default function Footer() {
             </li>
             <li className="nav-item">
               <a
-                href={""}
+                href={"/terms-of-service"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
@@ -98,7 +104,7 @@ export default function Footer() {
           bg-linear-0 from-indigo-400 to-indigo-900
           justify-center py-4 hover:text-black duration-200
           rounded-xl w-fit px-8 items-center mt-3 ">
-         
+
           <a target="_blank" href="/condo-loan-calculator" className="">โปรแกรมคำนวณวงเงินกู้</a>
         </div>
 

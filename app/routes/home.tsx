@@ -14,8 +14,29 @@ import { HIGHLIGHT_PROJECTS } from "~/const/app";
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "Easy hom 1969 - Home" },
-    { name: "description", content: "Welcome to React Router!" },
+    {
+      title:
+        "กู้บ้านเงินเหลือ คอนโดเงินเหลือ | EasyHom1969 เสริมสภาพคล่องครบวงจร",
+    },
+    {
+      name: "description",
+      content:
+        "ประเมินกู้บ้านเงินเหลือ กู้คอนโดเงินเหลือ ฟรี บริการซื้อบ้านปิดหนี้ แถมเงินเหลือ และคอนโดการันตีผู้เช่า One Stop Service สำหรับพนักงานเงินเดือนและเจ้าของธุรกิจ",
+    },
+
+    {
+      property: "og:title",
+      content: "EasyHom1969 | กู้บ้านเงินเหลือ–คอนโดเงินเหลือ ครบจบที่เดียว",
+    },
+    {
+      property: "og:description",
+      content:
+        "บริการกู้บ้านเงินเหลือ กู้คอนโดเงินเหลือ ซื้อบ้านปิดหนี้ พร้อมเงินเหลือ และคอนโดการันตีผู้เช่า ดูแลครบจบที่เดียว",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
   ];
 }
 

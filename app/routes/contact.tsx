@@ -20,14 +20,14 @@ export const CONTACT_LIST = [
     icon: <MdEmail />,
   },
   {
-    href: "tel:021099625",
-    label: "02 109 9625",
+    href: "tel:0657479789",
+    label: "06 5747 9789",
     icon: <FaPhoneAlt />,
   },
   {
-    href: "https://maps.app.goo.gl/SPv2skUq6jBPChaBA",
+    href: "https://maps.app.goo.gl/yEjzQZxQEoho1cnq9",
     label:
-      "92/5 อาคารสาธรธานี 2 ชั้นที่ 3 ถนนสาทรเหนือ สีลม เขตบางรัก กรุงเทพมหานคร",
+      "37 ถนน นางลิ้นจี่ แขวงช่องนนทรี เขตยานนาวา กรุงเทพมหานคร 10120",
     icon: <MdLocationOn />,
   },
 ];
@@ -89,7 +89,7 @@ export default function ContactPage() {
 
             <div className="pt-6">
               <a
-                href="tel:021099625"
+                href="tel:0657479789"
                 className="inline-flex items-center justify-center
                            px-8 py-3 border border-(--primary-color)
                            text-(--primary-color) hover:bg-(--primary-color) hover:text-black

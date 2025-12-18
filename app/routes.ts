@@ -10,8 +10,10 @@ export default [
         route("/blogs", "routes/blogs.tsx"),
         route("/blogs/:slug", "routes/slug/blog.tsx"),
         route("/contact", "routes/contact.tsx"),
+        route("/privacy-policy", "routes/privacy-policy.tsx"),
+        route("/terms-of-service", "routes/terms-of-service.tsx"),
         route("/condo-loan-calculator", "routes/estimator.tsx"),
-
+ 
 
 
     ]),
@@ -21,4 +23,9 @@ export default [
     route("/admin/blog/add", "routes/admin/blog.add.tsx"),
     route("/admin/blog/list", "routes/admin/blog.list.tsx"),
     route("/admin/blog/update/:blogId", "routes/admin/blog.update.tsx"),
+
+
+    // api
+
+    route("/api/apply", "routes/api/apply.tsx"),
 ] satisfies RouteConfig;

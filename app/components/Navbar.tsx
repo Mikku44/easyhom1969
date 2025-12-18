@@ -54,7 +54,7 @@ export default function Navbar() {
                             <MdEmail className='text-[22px]' />
                         </a>
 
-                        <a href="tel:021099625" target='_blank'
+                        <a href="tel:0657479789" target='_blank'
                             className=' hover:text-white/70'
                             referrerPolicy='no-referrer'>
                             <FaPhoneVolume className='text-[18px]'/>
@@ -65,9 +65,9 @@ export default function Navbar() {
                     {/* logo */}
                     <div className="h-[54px] aspect-square flex items-center gap-2">
                         <BurgerButton open={open} onClick={() => setOpen(!open)} />
-                        <Link className='min-w-8' to="/">
+                        <Link className='min-w-22' to="/">
                             <img
-                                src="/logo/logo.jpg"
+                                src="/logo/easyhomlogo.svg"
                                 alt="Easy Hom 1969 logo"
                                 className='h-full w-full object-cover' />
                         </Link>

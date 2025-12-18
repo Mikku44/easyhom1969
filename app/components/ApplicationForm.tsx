@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { toast } from "sonner";
 
 export default function ApplicationForm({ className }: { className?: string }) {
   const [form, setForm] = useState({
@@ -13,14 +14,39 @@ export default function ApplicationForm({ className }: { className?: string }) {
     coBorrower: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", form);
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/apply", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        throw new Error("Submit failed");
+      }
+
+      const result = await res.json();
+      console.log("Success:", result);
+
+      toast.success("ส่งข้อมูลเรียบร้อยแล้ว");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("เกิดข้อผิดพลาด กรุณาลองใหม่");
+    }finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -196,9 +222,10 @@ export default function ApplicationForm({ className }: { className?: string }) {
       {/* Submit */}
       <button
         type="submit"
-        className="w-full bg-black text-white py-2 rounded-full hover:bg-gray-800"
+        disabled={isLoading}
+        className={`w-full ${isLoading ? "bg-zinc-800" :"bg-black"} text-white py-2 rounded-full hover:bg-gray-800`}
       >
-        ส่งข้อมูล
+        {isLoading  ? "กำลังทำรายการ..." :"ส่งข้อมูล"}
       </button>
     </form>
   );

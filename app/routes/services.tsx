@@ -115,13 +115,13 @@ export default function Services() {
       <div className="bg-green-800 flex flex-col justify-center text-white p-10 ">
         <div className="text-2xl">เสนอบริการงานขายโครงการ</div>
         <div className="font-light">วิเคราะห์ภาพรวมตลาดอสังหาริมทรัพย์</div>
-        <Link to="tel:021099625" className="btn w-fit mt-5">สอบถามเพิ่มเติม</Link>
+        <Link to="tel:0657479789" className="btn w-fit mt-5">สอบถามเพิ่มเติม</Link>
       </div>
       <div className="bg-green-950 flex flex-col justify-center p-10 text-white">
         <div className="text-2xl">ติดต่อนักลงทุนสัมพันธ์</div>
         <div className="font-medium mt-5">EASY HOM. 1969 CO., LTD.</div>
         <div className="font-light">92/5 อาคารสาธรธานี 2 ชั้นที่ 3 ถนนสาทรเหนือ แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500</div>
-        <Link to="tel:021099625" className="btn w-fit mt-5">ติดต่อนักลงทุนสัมพันธ์</Link>
+        <Link to="tel:0657479789" className="btn w-fit mt-5">ติดต่อนักลงทุนสัมพันธ์</Link>
       </div>
 
     </section>

@@ -88,7 +88,7 @@ export default function Navbar() {
                     <div className="grid place-items-end  col-span-2 w-full mix-blend-difference ">
                         <NavLink
                             className="btn"
-                            to={"#"}>
+                            to={"/#learnmore"}>
                             สมัครเลย
                         </NavLink>
                     </div>

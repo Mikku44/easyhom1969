@@ -30,7 +30,7 @@ export default function Footer() {
 
           <div className="text-2xl flex gap-2 items-center mt-3 text-green-500">
             <PiPhoneCallBold />
-            <a target="_blank" href="tel:0657479789" className="">065-747-r9789</a>
+            <a target="_blank" href="tel:0657479789" className="">065-747-9789</a>
           </div>
 
 

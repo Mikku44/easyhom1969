@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { Calculator } from "lucide-react";
+import { Link } from "react-router";
 
 export default function CondoLoanCalculatorPage() {
   const [income, setIncome] = useState(30000);
@@ -14,29 +15,29 @@ export default function CondoLoanCalculatorPage() {
 
   return (
     <main className="min-h-[130vh] overflow-hidden  bg-gray-50 flex items-center justify-center p-6 relative">
-        <img src="/images/hero.jpg"
+      <img src="/images/hero.jpg"
         className="absolute h-full object-cover brightness-75 z-0"
         alt="background image" />
       <section className="relative z-1 bg-white w-full max-w-xl rounded-2xl shadow-lg">
         <div className="p-6 space-y-6">
           <div className="flex items-center gap-2">
             <Calculator className="w-5 h-5" />
-            <h1 className="text-xl font-semibold">ประเมินวงเงินกู้ซื้อคอนโด</h1>
+            <h1 className="text-xl font-semibold">ประเมินวงเงินกู้ซื้อคอนโดเบื้องต้น</h1>
           </div>
 
           <div className="space-y-2">
             <label className="text-sm">รายได้ต่อเดือน (บาท)</label>
-            <input className="input"  type="number" value={income} onChange={(e) => setIncome(+e.target.value)} />
+            <input className="input" type="number" value={income} onChange={(e) => setIncome(+e.target.value)} />
           </div>
 
           <div className="space-y-2">
             <label className="text-sm">ภาระหนี้ต่อเดือน (บาท)</label>
-            <input className="input"  type="number" value={debt} onChange={(e) => setDebt(+e.target.value)} />
+            <input className="input" type="number" value={debt} onChange={(e) => setDebt(+e.target.value)} />
           </div>
 
           <div className="space-y-2">
             <label className="text-sm">สัดส่วนผ่อนที่ธนาคารรับได้ (%)</label>
-            <input className="input"  type="number" value={rate} onChange={(e) => setRate(+e.target.value)} />
+            <input className="input" type="number" value={rate} onChange={(e) => setRate(+e.target.value)} />
           </div>
 
           <div className="bg-gray-100 rounded-xl p-4 space-y-2">
@@ -51,7 +52,12 @@ export default function CondoLoanCalculatorPage() {
             </p>
           </div>
 
-          <button className="w-full  bg-zinc-900 rounded-full text-white py-3  ">คำนวณใหม่</button>
+          <div className="w-full h-[50px] grid">
+            <a
+              href={"/#register-form"}
+              className="w-full bg-zinc-900 rounded-full text-center text-white py-3  ">ส่งข้อมูลเพื่อคำนวณวงเงินกู้
+            </a>
+          </div>
 
           <p className="text-xs text-gray-500">
             * เป็นการประเมินเบื้องต้น วงเงินจริงขึ้นอยู่กับการพิจารณาของธนาคาร

@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 
 interface StepItem {
@@ -78,12 +79,15 @@ export default function StepSection() {
           ง่าย ครบ จบในที่เดียว พร้อมทีมที่ปรึกษามืออาชีพ
         </p>
 
-        <button
-          className="mt-8 rounded-full bg-neutral-900 px-10 py-3 text-white
-                     hover:bg-(--primary-color) transition"
-        >
-          เริ่มประเมินวงเงินฟรี
-        </button>
+        <div className="mt-8">
+          <Link
+          to="/condo-loan-calculator"
+            className=" rounded-full bg-neutral-900 px-10 py-3 text-white
+                       hover:bg-(--primary-color) transition"
+          >
+            เริ่มประเมินวงเงินฟรี
+          </Link>
+        </div>
       </div>
     </section>
   );

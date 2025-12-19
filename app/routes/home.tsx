@@ -37,6 +37,23 @@ export function meta({ }: Route.MetaArgs) {
       property: "og:type",
       content: "website",
     },
+
+    {
+      property: "og:image",
+      content: "https://easyhom1969.vercel.app/images/banner (1).jpg",
+    },
+    {
+      property: "og:image:width",
+      content: "1200",
+    },
+    {
+      property: "og:image:height",
+      content: "630",
+    },
+    {
+      property: "og:image:type",
+      content: "image/jpeg",
+    },
   ];
 }
 

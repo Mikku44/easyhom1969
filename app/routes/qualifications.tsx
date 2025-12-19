@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import type { Route } from "./+types/home";
 import {motion } from "framer-motion";
 
@@ -179,12 +180,15 @@ export default function QualificationSection() {
             ใช้เอกสารเพียงเครดิตบูโร และเอกสารรายได้
             (*ขึ้นอยู่กับความครบถ้วนของเอกสาร)
           </p>
-          <button
-            className="mt-8 rounded-full bg-neutral-900 px-10 py-3 text-white
-                       hover:bg-neutral-800 transition"
-          >
-            ประเมินวงเงินฟรี
-          </button>
+          <div className="mt-8">
+            <Link
+            to="/#register-form"
+              className="mt-8 rounded-full bg-neutral-900 px-10 py-3 text-white
+                         hover:bg-neutral-800 transition"
+            >
+              ประเมินวงเงินฟรี
+            </Link>
+          </div>
         </div>
       </section>
     </main>

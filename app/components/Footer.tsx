@@ -39,7 +39,9 @@ export default function Footer() {
             <img src="/images/line.jpg"
               className="w-[150px]"
               alt="line qrcode" />
+
           </div>
+          <div className="text-sm mt-1">LINE ID : easyhom1969</div>
 
 
         </div>

@@ -1,6 +1,7 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import type { Route } from "./+types/home";
-import {motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { FaArrowRight } from "react-icons/fa6";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -114,9 +115,9 @@ export default function QualificationSection() {
                 duration: 0.6
               }}
               className=" text-xl max-w-3xl text-white/90 font-[300] mb-4">
-               สำหรับผู้ที่ต้องการกู้บ้านเงินเหลือ คอนโดเงินเหลือ
-            หรือซื้อบ้านปิดหนี้ให้ก่อน EasyHom1969
-            เราช่วยประเมินความสามารถในการกู้และวางแผนให้เหมาะกับแต่ละกลุ่ม
+              สำหรับผู้ที่ต้องการกู้บ้านเงินเหลือ คอนโดเงินเหลือ
+              หรือซื้อบ้านปิดหนี้ให้ก่อน EasyHom1969
+              เราช่วยประเมินความสามารถในการกู้และวางแผนให้เหมาะกับแต่ละกลุ่ม
             </motion.div>
           </div>
         </div>
@@ -172,7 +173,8 @@ export default function QualificationSection() {
           ))}
         </div>
         {/* Footer */}
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center bg-amber-50 p-10 relative rounded-4xl">
+
           <p className="text-neutral-700 font-medium">
             ประเมินวงเงินเบื้องต้น รู้ผลภายใน 24 ชั่วโมง*
           </p>
@@ -182,13 +184,58 @@ export default function QualificationSection() {
           </p>
           <div className="mt-8">
             <Link
-            to="/#register-form"
+              to="/#register-form"
               className="mt-8 rounded-full bg-neutral-900 px-10 py-3 text-white
                          hover:bg-neutral-800 transition"
             >
               ประเมินวงเงินฟรี
             </Link>
           </div>
+        </div> */}
+
+        <div className="w-full overflow-hidden mt-5 flex relative rounded-4xl h-[520px]">
+
+          <div className="absolute inset-0 w-full h-full flex flex-col items-baseline
+        p-10 justify-center gap-4 
+        bg-linear-0 from-black/80 to-black/0">
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0
+              }}
+
+              transition={{
+                duration: 0.6
+              }}
+              className=" md:max-w-[40%] max-w-[70%] md:text-3xl text-2xl text-white"> ประเมินวงเงินเบื้องต้น<br /> รู้ผลภายใน 24 ชั่วโมง*</motion.div>
+
+            <p className=" text-white/80 md:max-w-[40%] max-w-[70%]">
+              ใช้เอกสารเพียงเครดิตบูโร และเอกสารรายได้ <br/>
+              (ขึ้นอยู่กับความครบถ้วนของเอกสาร*)
+            </p>
+
+            {/* CTA */}
+            {/* <Link to="#" className="rounded-full bg-neutral-900 px-10 py-3 text-white
+                     hover:bg-neutral-800 transition">
+            ปรึกษาฟรีกับ EasyHom1969
+          </Link> */}
+            <NavLink
+              to="/contact"
+              className="rounded-full text-white py-4 px-8 justify-center
+           bg-neutral-900 flex gap-2 group items-center text-center">
+              <div className="">ประเมินวงเงินฟรี</div>
+              <div className="overflow-clip  duration-200
+          group-hover:translate-x-2 "><FaArrowRight /></div>
+            </NavLink>
+          </div>
+          <img src="/images/condo-cover-1.jpg"
+            className="w-full h-full object-cover rounded-4xl"
+            alt="image" />
         </div>
       </section>
     </main>

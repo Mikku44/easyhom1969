@@ -18,7 +18,7 @@ body {
 }
 
 .input {
-  @apply border border-zinc-300 rounded-full px-4 py-2 mx-2;
+  @apply border border-zinc-300 h-fit px-4 py-2 mx-2;
 }
 
 .btn {
@@ -28,6 +28,9 @@ body {
   @apply bg-linear-180 from-white to-slate-300  shadow-white text-black/80  px-12 duration-200 rounded-full py-3 ;
 }
 
+.swiper {
+  @apply h-[350px];
+}
 
 .mc-hd .nav-item .nav-lnk {
   position: relative;

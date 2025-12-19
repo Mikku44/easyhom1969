@@ -23,7 +23,7 @@ export const MENU_APP = [
 ] 
 
 export const CONTACT_LIST = [
-    { href : "mailto:easyhome1969@gmail.com" , label : "easyhome1969@gmail.com"},
+    { href : "mailto:easyhom1969@gmail.com" , label : "easyhom1969@gmail.com"},
     { href : "tel:0657479789" , label : "06 5747 9789"},
     { href : "https://maps.app.goo.gl/yEjzQZxQEoho1cnq9" , label : "37 ถนน นางลิ้นจี่ แขวงช่องนนทรี เขตยานนาวา กรุงเทพมหานคร 10120"},
 ]

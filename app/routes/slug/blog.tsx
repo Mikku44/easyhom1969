@@ -63,156 +63,143 @@ export default function BlogDetail({
           className="w-full -mt-10 h-[480px] object-cover "
         />
       </div>
-      <div className="container mx-auto px-4 max-w-6xl">
-
-
-
-
-        {/* Header Section */}
-        <header className="">
-          <nav className="text-sm text-gray-500 mb-6">
-            <ol className="flex space-x-2">
-              <li>
-                <a href="/" className="hover:text-orange-600 transition-colors">
-                  Home
-                </a>
-              </li>
-              <li className="before:content-['/'] before:mx-2">
-                <a
-                  href="/blogs"
-                  className="hover:text-orange-600 transition-colors"
-                >
-                  Blog
-                </a>
-              </li>
-              <li className="before:content-['/'] before:mx-2 text-gray-700 truncate">
-                {blog.title}
-              </li>
-            </ol>
-          </nav>
-
-
-
-          <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
-            {blog.title}
-          </h1>
-
-          {/* <p className="text-xl text-gray-600 leading-relaxed mb-6">
-            {blog.excerpt}
-          </p> */}
-
-
-        </header>
-
-
-
-        {/* Main Content */}
-        <div className="flex flex-col gap-8">
-          {/* Article Section */}
-          <article className="">
-            {/* Cover image */}
-            {/* {blog.images?.length > 0 && (
-              <div className="mb-8">
-                <img
-                  src={blog.images[0]}
-                  alt={blog.title}
-                  className="w-full h-96 object-cover "
-                />
-              </div>
-            )} */}
-
-            {/* Blog Content */}
-            <div className="prose prose-lg max-w-none remark-content">
-              <ReactMarkdown>{blog.contents}</ReactMarkdown>
-              {/* <RemarkPreview value={blog.contents} /> */}
-            </div>
-
-            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 py-4">
-              <div className="flex items-center">
-                <svg
-                  className="w-4 h-4 mr-2 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-                <span>Author: {blog.author}</span>
-              </div>
-
-              <div className="flex items-center">
-                <svg
-                  className="w-4 h-4 mr-2 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <span>Publish at : {publishDate}</span>
-              </div>
-            </div>
-
-            {/* Tags */}
-            <div className="mt-8 flex flex-wrap gap-2">
-              {blog.tags
-                ?.split(",")
-                ?.slice(0, 5)
-                ?.map((tag: string, index: number) => (
-                  <span
-                    key={index}
-                    className="px-4 py-2 border-black/80 rounded-full border text-black/80 text-sm 
-                    font-medium hover:bg-black hover:text-white transition-colors cursor-pointer"
+      <div className="grid grid-cols-3 mb-16 container-x">
+        <div className=" col-span-2 mx-auto px-4">
+          {/* Header Section */}
+          <header className="">
+            <nav className="text-sm text-gray-500 mb-6">
+              <ol className="flex space-x-2">
+                <li>
+                  <a href="/" className="hover:text-orange-600 transition-colors">
+                    Home
+                  </a>
+                </li>
+                <li className="before:content-['/'] before:mx-2">
+                  <a
+                    href="/blogs"
+                    className="hover:text-orange-600 transition-colors"
                   >
-                    {tag.trim()}
-                  </span>
-                ))}
-            </div>
-          </article>
+                    Blog
+                  </a>
+                </li>
+                <li className="before:content-['/'] before:mx-2 text-gray-700 truncate">
+                  {blog.title}
+                </li>
+              </ol>
+            </nav>
+            <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
+              {blog.title}
+            </h1>
+            {/* <p className="text-xl text-gray-600 leading-relaxed mb-6">
+              {blog.excerpt}
+            </p> */}
+          </header>
+          {/* Main Content */}
+          <div className="flex flex-col gap-8">
+            {/* Article Section */}
+            <article className="">
+              {/* Cover image */}
+              {/* {blog.images?.length > 0 && (
+                <div className="mb-8">
+                  <img
+                    src={blog.images[0]}
+                    alt={blog.title}
+                    className="w-full h-96 object-cover "
+                  />
+                </div>
+              )} */}
+              {/* Blog Content */}
+              <div className="prose prose-lg max-w-none remark-content">
+                <ReactMarkdown>{blog.contents}</ReactMarkdown>
+                {/* <RemarkPreview value={blog.contents} /> */}
+              </div>
+              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 py-4">
+                <div className="flex items-center">
+                  <svg
+                    className="w-4 h-4 mr-2 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+                  <span>Author: {blog.author}</span>
+                </div>
+                <div className="flex items-center">
+                  <svg
+                    className="w-4 h-4 mr-2 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span>Publish at : {publishDate}</span>
+                </div>
+              </div>
+              {/* Tags */}
+              <div className="mt-8 flex flex-wrap gap-2">
+                {blog.tags
+                  ?.split(",")
+                  ?.slice(0, 5)
+                  ?.map((tag: string, index: number) => (
+                    <span
+                      key={index}
+                      className="px-4 py-2 border-black/80 rounded-full border text-black/80 text-sm
+                      font-medium hover:bg-black hover:text-white transition-colors cursor-pointer"
+                    >
+                      {tag.trim()}
+                    </span>
+                  ))}
+              </div>
+            </article>
+          </div>
+          
 
         </div>
 
-        {/* Related Blogs */}
-        <section className="mt-16">
-          <div className="border-t border-gray-200 pt-12">
-            <div className="flex justify-between items-center mb-8">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900">
-                  Another Tips & Tricks
-                </h2>
+        {/* left panel */}
 
-              </div>
 
-              <Link
-                to="/blogs"
-                className="border border-black/80 rounded-full px-4 py-2 text-black/80 
-                hover:bg-black/80 hover:text-white transition-all flex items-center gap-2"
-              >
-                See more <ChevronRight />
-              </Link>
-            </div>
-
-            <div className="grid md:grid-cols-3 items-start gap-6">
-              {relatedBlogs.map((item, index) => (
-                <BlogCard
-                   blog={item} 
-                  key={index}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
       </div>
+
+{/* Related Blogs */}
+      <section className="mt-16 container-x">
+        <div className="border-t border-gray-200 pt-12">
+          <div className="flex justify-between items-center mb-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">
+                Another Tips & Tricks
+              </h2>
+            </div>
+            <Link
+              to="/blogs"
+              className="border border-black/80 rounded-full px-4 py-2 text-black/80
+                  hover:bg-black/80 hover:text-white transition-all flex items-center gap-2"
+            >
+              See more <ChevronRight />
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 items-start gap-6">
+            {relatedBlogs.map((item, index) => (
+              <BlogCard
+                blog={item}
+                key={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

@@ -11,6 +11,7 @@ import BlogCard from "~/components/BlogCard";
 import { blogService } from "~/services/blogService";
 import { ChevronRight } from "lucide-react";
 import { HIGHLIGHT_PROJECTS } from "~/const/app";
+import HorizontalSwiper from "~/components/HorizontalSwiper";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -385,10 +386,12 @@ export default function Home() {
           </span>
         </Link>
       </div>
-      {/*  */}
-      <div className="grid md:grid-cols-2 gap-4">
+      {/*  */}<HorizontalSwiper className='h-[350px] box-container-md w-full items-center'>
         {blogs.map((item, key) => <BlogCard blog={item} key={key} />)}
-      </div>
+      </HorizontalSwiper>
+      {/* <div className="grid md:grid-cols-2 gap-4">
+        {blogs.map((item, key) => <BlogCard blog={item} key={key} />)}
+      </div> */}
     </section>
   </main>;
 }

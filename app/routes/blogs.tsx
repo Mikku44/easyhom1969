@@ -2,7 +2,7 @@ import { blogService } from "~/services/blogService";
 import type { Route } from "./+types/home";
 import BlogCard from "~/components/BlogCard";
 import { useLoaderData, Link } from "react-router"; // Import Link for navigation
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 // Define the limit constant (good practice)
 const LIMIT = 4;
 
@@ -62,7 +62,7 @@ export default function BlogPage() {
                 duration: 0.6
               }}
               className="lg:text-5xl md:text-3xl text-2xl text-white font-[300] ">
-              Easy Hom 1969 - บทความและสาระน่ารู้
+              บทความและสาระน่ารู้
             </motion.h1>
           </div>
           <div className="lg:h-[62px] w-full mx-auto max-w-5xl overflow-clip">
@@ -82,14 +82,18 @@ export default function BlogPage() {
           </div>
         </div>
 
-        <img src={"/images/cover-blog.jpg"}
+        <img src={"/images/real-estate.jpg"}
           className="h-full w-full object-cover" alt="hero image qualicication"
         // Added object-cover for better image fit
         />
       </section>
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header with New Title and Description */}
-        
+        <div className="h-[350px] mb-6 rounded-xl overflow-hidden">
+          <BlogCard
+            blog={blogs?.[0]}
+          />
+        </div>
 
         {/* Grid of Cards */}
         {blogs.length === 0 ? (
@@ -108,32 +112,7 @@ export default function BlogPage() {
         )}
 
         {/* Pagination Controls */}
-        <div className="flex justify-center items-center space-x-4 mt-12">
-          {/* Previous Button */}
-          {page > 1 && (
-            <Link
-              to={getPageUrl(page - 1)}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-150"
-            >
-              &larr; ก่อนหน้า
-            </Link>
-          )}
 
-          {/* Current Page Indicator (Optional but helpful) */}
-          <span className="px-3 py-1 text-base font-semibold text-gray-700">
-            หน้าที่ {page}
-          </span>
-
-          {/* Next Button */}
-          {hasMore && (
-            <Link
-              to={getPageUrl(page + 1)}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-150"
-            >
-              ถัดไป &rarr;
-            </Link>
-          )}
-        </div>
       </div>
     </main>
   );

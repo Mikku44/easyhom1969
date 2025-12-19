@@ -15,8 +15,8 @@ export function meta({ }: Route.MetaArgs) {
 
 export const CONTACT_LIST = [
   {
-    href: "mailto:easyhome1969@gmail.com",
-    label: "easyhome1969@gmail.com",
+    href: "mailto:easyhom1969@gmail.com",
+    label: "easyhom1969@gmail.com",
     icon: <MdEmail />,
   },
   {

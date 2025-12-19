@@ -5,9 +5,12 @@ import type { IBlogModel } from "~/models/blog";
 export default function BlogCard({blog} : {blog : IBlogModel}) {
     return (
         <Link to={`/blogs/${blog?.slug || "#"}`} 
-        className="h-[350px] w-full relative group">
-            <div className="absolute z-10 w-full h-full max-h-[350px] bg-linear-0 from-black to-black/0 flex justify-end flex-col p-5">
-                <div className="rounded-full bg-white px-5 w-fit py-1">blog</div>
+        className="min-h-[350px] h-[350px] w-full relative group rounded-xl overflow-hidden">
+            <img src="/logo/easyhomlogo.svg"
+            className="absolute z-10 top-0 left-0  m-3 w-[72px]"
+            alt="easyhom logo" />
+            <div className="absolute z-10 w-full h-full max-h-[350px] bg-linear-0 from-black to-blue-500/0 flex justify-end flex-col p-5">
+                <div className="rounded-full bg-white px-5 w-fit py-1">{blog?.tags?.split(",")?.[0] || "blog"}</div>
                 <div className="text-2xl group-hover:text-white/80 duration-200 mt-2 text-white line-clamp-2">
                     {blog?.title || "บทความที่น่าสนใจ"}
                 </div>

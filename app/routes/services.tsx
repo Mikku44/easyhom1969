@@ -53,19 +53,31 @@ export default function Services() {
     </section>
 
 
-    <section className="max-w-5xl mx-auto grid md:grid-cols-3 gap-4 px-6 py-16 space-y-12">
-      <section className="space-y-4">
-        <h1 className="text-3xl font-semibold">
-          บริการของ EasyHom1969
-        </h1>
-        <p className="text-zinc-700 leading-relaxed">
-          EasyHom1969 คือผู้เชี่ยวชาญด้านการให้คำปรึกษาและวางแผนการกู้ซื้ออสังหาริมทรัพย์แบบครบวงจร
-          ดูแลตั้งแต่การประเมินความสามารถในการกู้ ไปจนถึงการช่วยปิดหนี้เดิม
-          เพื่อให้คุณมีบ้านหรือคอนโดในเงื่อนไขที่เหมาะสมที่สุด
-        </p>
+    <div className="container-x">
+      <section className="max-w-5xl  text-white bg-linear-60 from-green-950 to-green-800
+      rounded-4xl mt-5 relative mx-auto grid md:grid-cols-3 gap-4 px-6 py-16 space-y-12">
+        <section className="space-y-4">
+          <h1 className="text-3xl font-semibold">
+            บริการของ EasyHom1969
+          </h1>
+          <p className="text-white/80 leading-relaxed">
+            EasyHom1969 คือผู้เชี่ยวชาญด้านการให้คำปรึกษาและวางแผนการกู้ซื้ออสังหาริมทรัพย์แบบครบวงจร
+            ดูแลตั้งแต่การประเมินความสามารถในการกู้ ไปจนถึงการช่วยปิดหนี้เดิม
+            เพื่อให้คุณมีบ้านหรือคอนโดในเงื่อนไขที่เหมาะสมที่สุด
+          </p>
+          <div className="md:absolute md:mb-0 mb-[-90px] bottom-[-20px] right-10">
+            <img src="/images/person.png"
+            className="w-[450px]"
+            alt="" />
+          </div>
+        </section>
       </section>
+    </div>
 
-      <section className="space-y-3 border border-zinc-200 rounded-3xl p-5">
+    {/* Services List */}
+
+    <section className="max-w-5xl relative z-2 mx-auto px-6 py-4 space-y-8 mb-16 grid md:grid-cols-2 gap-4 ">
+      <section className="space-y-3 border  border-zinc-200 rounded-3xl bg-white p-5">
         <h2 className="text-xl font-medium">
           ให้คำปรึกษากู้บ้านเงินเหลือ และคอนโดเงินเหลือ
         </h2>
@@ -76,7 +88,7 @@ export default function Services() {
         </p>
       </section>
 
-      <section className="space-y-3 border border-zinc-200 rounded-3xl p-5">
+      <section className="space-y-3 border border-zinc-200 rounded-3xl bg-white p-5">
         <h2 className="text-xl font-medium">
           บริการซื้อบ้านปิดหนี้ให้ก่อน
         </h2>
@@ -87,7 +99,7 @@ export default function Services() {
         </p>
       </section>
 
-      <section className="space-y-3 border border-zinc-200 rounded-3xl p-5">
+      <section className="space-y-3 border border-zinc-200 rounded-3xl bg-white p-5">
         <h2 className="text-xl font-medium">
           ดูแลทุกเคส ช่วยดันจนกว่าจะรู้ผล
         </h2>
@@ -97,7 +109,7 @@ export default function Services() {
         </p>
       </section>
 
-      <section className="space-y-3 border border-zinc-200 rounded-3xl p-5">
+      <section className="space-y-3 border border-zinc-200 rounded-3xl bg-white p-5">
         <h2 className="text-xl font-medium">
           บ้านเงินเหลือและคอนโดเงินเหลือ ทำเลคุณภาพ
         </h2>

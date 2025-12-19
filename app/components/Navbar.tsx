@@ -48,7 +48,7 @@ export default function Navbar() {
                             <FaInstagram className='text-[22px]' />
                         </a>
 
-                        <a href="mailto:easyhome1969@gmail.com" target='_blank'
+                        <a href="mailto:easyhom1969@gmail.com" target='_blank'
                             className=' hover:text-white/70 '
                             referrerPolicy='no-referrer'>
                             <MdEmail className='text-[22px]' />

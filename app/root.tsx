@@ -19,7 +19,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "icon",
-    href: "/logo/logo.jpg",
+    href: "/favicon.ico",
     crossOrigin: "anonymous",
   },
   {

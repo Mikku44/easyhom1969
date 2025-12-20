@@ -21,7 +21,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "icon",
-    href: "/logo/easyhomlogo.png",
+    href: "/logo/easyhomlogo-black.png",
     crossOrigin: "anonymous",
   },
   {

@@ -152,9 +152,9 @@ export default function Home() {
 
 
           <div className=" flex flex-col items-end">
-            <div className="md:hidden h-[250px] w-auto -mr-5 -mt-16">
+            <div className="md:hidden h-[250px] w-auto -mr-5 -mt-14">
               <img src="/images/owner.png"
-                className="md:h-[500px] h-[350px] w-fit  duration-200 hover: "
+                className="md:h-[500px] h-[350px] aspect-[9/12]  duration-200 hover: "
                 alt="owner" />
             </div>
             <ApplicationForm className="w-full" />

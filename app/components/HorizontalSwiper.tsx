@@ -59,7 +59,7 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
         modules={[Pagination, Navigation]}
         breakpoints={{
           0: { slidesPerView: 1, spaceBetween: 10 }, // mobile
-          335: { slidesPerView: 2, spaceBetween: 10 }, // mobile
+          335: { slidesPerView: 1, spaceBetween: 10 }, // mobile
           432: { slidesPerView: 2, spaceBetween: 15 }, // tablet
           700: { slidesPerView: 4, spaceBetween: 15 }, // tablet
           768: { slidesPerView: 2, spaceBetween: 15 }, // tablet

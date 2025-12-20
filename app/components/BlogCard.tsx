@@ -7,7 +7,7 @@ export default function BlogCard({ blog }: { blog: IBlogModel }) {
     <Link
       to={`/blogs/${blog?.slug || "#"}`}
       className="
-        relative group w-full h-[350px] rounded-xl overflow-hidden
+        relative group min-w-[250px] w-full h-[350px] rounded-xl overflow-hidden
         touch-manipulation 
       "
     >
@@ -22,7 +22,7 @@ export default function BlogCard({ blog }: { blog: IBlogModel }) {
       <div
         className="
           absolute inset-0 z-10 flex flex-col justify-end gap-2 p-5
-          bg-gradient-to-t h-[350px] w-full from-black/90 via-black/40 to-transparent
+          bg-gradient-to-t min-w-[250px] h-[350px] max-w-full w-full from-black/90 via-black/40 to-transparent
         "
       >
         {/* Tag */}

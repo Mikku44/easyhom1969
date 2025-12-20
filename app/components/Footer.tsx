@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="md:col-span-2 ">
           <Link className=' w-[150px] ' to="/">
             <img
-              src="/logo/easyhomlogo.svg"
+              src="/logo/easyhomlogo.png"
               alt="Easy Hom 1969 logo"
               className=' w-28' />
           </Link>

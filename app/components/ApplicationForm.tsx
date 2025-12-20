@@ -44,7 +44,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
     } catch (error) {
       console.error("Error submitting form:", error);
       toast.error("เกิดข้อผิดพลาด กรุณาลองใหม่");
-    }finally {
+    } finally {
       setIsLoading(false);
     }
   };
@@ -53,76 +53,73 @@ export default function ApplicationForm({ className }: { className?: string }) {
     <form
       id="register-form"
       onSubmit={onSubmit}
-      className={`${className} max-w-2xl mx-auto space-y-6 bg-white p-6 shadow rounded-3xl border border-zinc-300`}
+      className={`
+    ${className}
+    max-w-2xl mx-auto space-y-6
+    bg-white p-5 sm:p-6
+    shadow rounded-3xl
+    border border-zinc-300
+  `}
     >
-      <div className="grid grid-cols-2 gap-2">
-
-        {/* Phone */}
+      {/* Phone + Job */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium mb-1">
             เบอร์โทร <span className="text-red-500">*</span>
           </label>
           <input
             name="phone"
-            type="text"
+            type="tel"
             value={form.phone}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-full px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-4 py-3 text-base"
             placeholder="เบอร์โทร"
             required
           />
         </div>
-        {/* Job */}
+
         <div>
           <label className="block text-sm font-medium mb-1">
             อาชีพ <span className="text-red-500">*</span>
           </label>
-          {/* <input
-            name="job"
-            type="text"
-            value={form.job}
-            onChange={onChange}
-            className="w-full border border-zinc-300 rounded-full px-3 py-2"
-            placeholder="อาชีพ"
-            required
-          /> */}
           <select
             name="job"
             value={form.job}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-full px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-4 py-3 text-base"
             required
           >
             <option value="">-- เลือกอาชีพ --</option>
             <option value="พนักงานประจำ">พนักงานประจำ</option>
             <option value="เจ้าของกิจการ">เจ้าของกิจการ</option>
-
           </select>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
-        {/* Salary */}
+      {/* Salary + Payment Status */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium mb-1">
-            {form.job == "เจ้าของกิจการ" ?
-              "เงินหมุนเวียนบัญชีต่อเดือนเท่าไหร่"
-              : "เงินเดือน รับรวมในสลิป เท่าไหร่"} <span className="text-red-500">*</span>
+            {form.job === "เจ้าของกิจการ"
+              ? "เงินหมุนเวียนบัญชีต่อเดือนเท่าไหร่"
+              : "เงินเดือน รับรวมในสลิป เท่าไหร่"}{" "}
+            <span className="text-red-500">*</span>
           </label>
           <input
-
             name="salary"
             type="number"
             value={form.salary}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-full px-3 py-2"
-            placeholder={form.job == "เจ้าของกิจการ" ?
-              "เงินหมุนเวียนบัญชีต่อเดือน"
-              : "เงินเดือน "}
+            className="w-full border border-zinc-300 rounded-full px-4 py-3 text-base"
+            placeholder={
+              form.job === "เจ้าของกิจการ"
+                ? "เงินหมุนเวียนบัญชีต่อเดือน"
+                : "เงินเดือน"
+            }
             required
           />
         </div>
-        {/* Payment Status */}
+
         <div>
           <label className="block text-sm font-medium mb-1">
             สถานะการชำระ <span className="text-red-500">*</span>
@@ -131,7 +128,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
             name="paymentStatus"
             value={form.paymentStatus}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-full px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-4 py-3 text-base"
             required
           >
             <option value="">-- เลือกสถานะ --</option>
@@ -148,8 +145,8 @@ export default function ApplicationForm({ className }: { className?: string }) {
         </div>
       </div>
 
-      {/* First Name */}
-      <div className="grid grid-cols-2 gap-2">
+      {/* Name */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium mb-1">
             ชื่อ <span className="text-red-500">*</span>
@@ -159,12 +156,12 @@ export default function ApplicationForm({ className }: { className?: string }) {
             type="text"
             value={form.firstName}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-full px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-4 py-3 text-base"
             placeholder="ชื่อ"
             required
           />
         </div>
-        {/* Last Name */}
+
         <div>
           <label className="block text-sm font-medium mb-1">
             นามสกุล <span className="text-red-500">*</span>
@@ -174,7 +171,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
             type="text"
             value={form.lastName}
             onChange={onChange}
-            className="w-full border border-zinc-300 rounded-full px-3 py-2"
+            className="w-full border border-zinc-300 rounded-full px-4 py-3 text-base"
             placeholder="นามสกุล"
             required
           />
@@ -189,7 +186,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
           type="email"
           value={form.email}
           onChange={onChange}
-          className="w-full border border-zinc-300 rounded-full px-3 py-2"
+          className="w-full border border-zinc-300 rounded-full px-4 py-3 text-base"
           placeholder="อีเมล์"
         />
       </div>
@@ -203,7 +200,7 @@ export default function ApplicationForm({ className }: { className?: string }) {
           name="coBorrower"
           value={form.coBorrower}
           onChange={onChange}
-          className="w-full border border-zinc-300 rounded-full px-3 py-2"
+          className="w-full border border-zinc-300 rounded-full px-4 py-3 text-base"
           required
         >
           <option value="">-- เลือกคำตอบ --</option>
@@ -212,21 +209,28 @@ export default function ApplicationForm({ className }: { className?: string }) {
         </select>
       </div>
 
-
-      <div className="">
-        การใช้ข้อมูลเป็นไปตามนโยบายวัตถุประสงค์ในการเก็บข้อมูลส่วนบุคคลของบริษัทฯ ตาม<Link
-          className="underline text-amber-500"
-          to="/privacy-policy">เงื่อนไขความเป็นส่วนตัว</Link>
-      </div>
+      {/* Privacy */}
+      <p className="text-sm text-zinc-600 leading-relaxed">
+        การใช้ข้อมูลเป็นไปตามนโยบายวัตถุประสงค์ในการเก็บข้อมูลส่วนบุคคลของบริษัทฯ
+        ตาม
+        <Link to="/privacy-policy" className="underline text-amber-500 ml-1">
+          เงื่อนไขความเป็นส่วนตัว
+        </Link>
+      </p>
 
       {/* Submit */}
       <button
         type="submit"
         disabled={isLoading}
-        className={`w-full ${isLoading ? "bg-zinc-800" :"bg-black"} text-white py-2 rounded-full hover:bg-gray-800`}
+        className={`
+      w-full rounded-full py-3 text-base text-white
+      transition
+      ${isLoading ? "bg-zinc-800" : "bg-black hover:bg-zinc-800"}
+    `}
       >
-        {isLoading  ? "กำลังทำรายการ..." :"ส่งข้อมูล"}
+        {isLoading ? "กำลังทำรายการ..." : "ส่งข้อมูล"}
       </button>
     </form>
+
   );
 }

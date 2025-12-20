@@ -67,7 +67,7 @@ export default function Navbar() {
                         <BurgerButton open={open} onClick={() => setOpen(!open)} />
                         <Link className='min-w-22' to="/">
                             <img
-                                src="/logo/easyhomlogo.svg"
+                                src="/logo/easyhomlogo.png"
                                 alt="Easy Hom 1969 logo"
                                 className='h-full w-full object-cover' />
                         </Link>

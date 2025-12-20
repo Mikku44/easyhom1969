@@ -152,9 +152,9 @@ export default function Home() {
 
 
           <div className=" flex flex-col items-end">
-            <div className="md:hidden h-[250px] -mr-5 -mt-16">
+            <div className="md:hidden h-[250px] w-auto -mr-5 -mt-16">
               <img src="/images/owner.png"
-                className="md:h-[500px] h-[350px] w-fit hover:opacity-0 duration-200 hover: "
+                className="md:h-[500px] h-[350px] w-fit  duration-200 hover: "
                 alt="owner" />
             </div>
             <ApplicationForm className="w-full" />
@@ -239,101 +239,125 @@ export default function Home() {
     </section>
 
 
-    <section className=" grid gap-2 min-h-[300px]  pt-10">
-      <div className="container-x w-full overflow-hidden rounded-2xl mx-auto h-[500px] relative">
-        <div className="absolute justify-center gap-5 md:justify-between md:flex-row flex-col
-         flex z-1 px-10 w-full h-full ">
-          <div className="  flex justify-center flex-col md:h-full">
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 10
-              }}
-
-              whileInView={{
-                opacity: 1,
-                y: 0
-              }}
-
-              transition={{
-                duration: 0.6
-              }}
-              className="text-4xl max-w-[300px] text-white">ให้คำปรึกษาด้านการกู้อย่างเป็นระบบ</motion.div>
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 10
-              }}
-
-              whileInView={{
-                opacity: 1,
-                y: 0
-              }}
-
-              transition={{
-                duration: 0.6,
-                delay: 0.2
-              }}
-              className="text-xl font-light max-w-[300px] text-white/90">วิเคราะห์กู้บ้านเงินเหลือกับผู้เชี่ยวชาญ กู้ให้เหมาะกับแผนชีวิตของคุณ</motion.div>
+    <section className="container-x">
+      <div className="relative  md:h-[520px] h-[420px] w-full overflow-hidden rounded-2xl">
+        {/* Background image */}
+        <img
+          src="/images/condo-cover.jpg"
+          alt="image"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
+        {/* Content */}
+        <div className="relative  z-10 flex h-full flex-col md:flex-row items-start md:items-center justify-center md:justify-between px-6 md:px-12 gap-8">
+          {/* Text */}
+          <div className="max-w-xl space-y-4">
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-4xl font-semibold text-white leading-snug"
+            >
+              ให้คำปรึกษาด้านการกู้อย่างเป็นระบบ
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-base md:text-lg text-white/90 font-light leading-relaxed"
+            >
+              วิเคราะห์กู้บ้านเงินเหลือกับผู้เชี่ยวชาญ
+              วางแผนการกู้ให้เหมาะกับชีวิตและอนาคตของคุณ
+            </motion.p>
           </div>
-
-          <div className="w-fit  flex justify-center flex-col md:h-full">
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="md:self-center"
+          >
             <NavLink
-              className="btn flex items-center group"
-              to={"/contact"}>
-              สมัครเลย <ChevronRight className="duration-200 group-hover:translate-x-1" />
+              to="/contact"
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-lg transition hover:bg-black hover:text-white"
+            >
+              สมัครปรึกษาฟรี
+              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </NavLink>
-          </div>
+          </motion.div>
         </div>
-        <img src="/images/condo-cover.jpg"
-          className="h-full w-full absolute object-cover"
-          alt="image" />
       </div>
+    </section>
+    <section className=" grid gap-2 min-h-[300px]  pt-10">
+
       <WhyChooseUsSection />
     </section>
 
     {/* step */}
     <section className=" grid gap-2 min-h-[300px] container-x">
-      <div className="w-full overflow-hidden  flex relative rounded-4xl h-[520px]">
-
-        <div className="absolute inset-0 w-full h-full flex flex-col items-baseline
-        p-10 justify-center gap-4 
-        bg-linear-0 from-black/80 to-black/0">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10
-            }}
-
-            whileInView={{
-              opacity: 1,
-              y: 0
-            }}
-
-            transition={{
-              duration: 0.6
-            }}
-            className=" md:max-w-[40%] max-w-[70%] md:text-4xl text-3xl text-white"> วางแผนดี มีบ้านพร้อมเงินเหลือ ด้วยทีมมืออาชีพ</motion.div>
-
+      <div className="relative flex h-[400px] md:h-[520px] w-full overflow-hidden rounded-4xl">
+        {/* Overlay content */}
+        <div
+          className="
+      absolute inset-0 z-10 flex flex-col justify-center gap-6
+      px-6 md:px-10
+      bg-gradient-to-r from-black/80 via-black/40 to-black/0
+    "
+        >
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="
+        text-white font-medium leading-tight
+        max-w-[85%] md:max-w-[40%]
+        text-[clamp(1.5rem,4vw,2.25rem)]
+      "
+          >
+            วางแผนดี มีบ้านพร้อมเงินเหลือ ด้วยทีมมืออาชีพ
+          </motion.h1>
 
           {/* CTA */}
-          {/* <Link to="#" className="rounded-full bg-neutral-900 px-10 py-3 text-white
-                     hover:bg-neutral-800 transition">
-            ปรึกษาฟรีกับ EasyHom1969
-          </Link> */}
-          <NavLink
-            to="/contact"
-            className="rounded-full text-white py-4 px-8 justify-center
-           bg-neutral-900 flex gap-2 group items-center text-center">
-            <div className="">  ปรึกษาฟรีกับ EasyHom1969</div>
-            <div className="overflow-clip opacity-0 group-hover:opacity-100 duration-200
-          group-hover:translate-x-2 "><FaArrowRight /></div>
-          </NavLink>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="w-full md:w-auto"
+          >
+            <NavLink
+              to="/contact"
+              className="
+          group inline-flex w-full md:w-auto items-center justify-center gap-2
+          rounded-full bg-neutral-900 text-white
+          px-6 md:px-10 py-3 md:py-4
+          text-sm md:text-base
+          transition hover:bg-neutral-800
+        "
+            >
+              ปรึกษาฟรีกับ EasyHom1969
+              <span
+                className="
+            opacity-0 -translate-x-1
+            transition-all duration-200
+            group-hover:opacity-100 group-hover:translate-x-1
+          "
+              >
+                <FaArrowRight />
+              </span>
+            </NavLink>
+          </motion.div>
         </div>
-        <img src="/images/condo-cover-1.jpg"
-          className="w-full h-full object-cover rounded-4xl"
-          alt="image" />
+
+        {/* Background image */}
+        <img
+          src="/images/condo-cover-1.jpg"
+          alt="image"
+          className="h-full w-full object-cover rounded-4xl"
+        />
       </div>
+
 
 
       <StepSection />

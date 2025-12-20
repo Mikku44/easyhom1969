@@ -27,17 +27,17 @@ export default function CondoLoanCalculatorPage() {
 
           <div className="space-y-2">
             <label className="text-sm">รายได้ต่อเดือน (บาท)</label>
-            <input className="input" type="number" value={income} onChange={(e) => setIncome(+e.target.value)} />
+            <input className="input rounded-full" type="number" value={income} onChange={(e) => setIncome(+e.target.value)} />
           </div>
 
           <div className="space-y-2">
             <label className="text-sm">ภาระหนี้ต่อเดือน (บาท)</label>
-            <input className="input" type="number" value={debt} onChange={(e) => setDebt(+e.target.value)} />
+            <input className="input rounded-full" type="number" value={debt} onChange={(e) => setDebt(+e.target.value)} />
           </div>
 
           <div className="space-y-2">
             <label className="text-sm">สัดส่วนผ่อนที่ธนาคารรับได้ (%)</label>
-            <input className="input" type="number" value={rate} onChange={(e) => setRate(+e.target.value)} />
+            <input className="input rounded-full" type="number" value={rate} onChange={(e) => setRate(+e.target.value)} />
           </div>
 
           <div className="bg-gray-100 rounded-xl p-4 space-y-2">

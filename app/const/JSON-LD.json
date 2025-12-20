@@ -1,0 +1,65 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://easyhom1969.com/#organization",
+      "name": "บริษัท อีซี่ โฮม. 1969 จำกัด",
+      "alternateName": "EASY HOM. 1969 CO., LTD.",
+      "url": "https://easyhom1969.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://easyhom1969.com/logo/logo.png"
+      },
+      "description": "ตัวแทนและนายหน้าอสังหาริมทรัพย์ บริการรับฝากขาย เช่า และจัดหาอสังหาริมทรัพย์ ย่านสาทร-นางลิ้นจี่-ช่องนนทรี",
+      "email": "easyhom1969@gmail.com",
+      "telephone": "+66-65-747-9789",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "37 ถนนนางลิ้นจี่ แขวงช่องนนทรี",
+        "addressLocality": "เขตยานนาวา",
+        "addressRegion": "กรุงเทพมหานคร",
+        "postalCode": "10120",
+        "addressCountry": "TH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 13.7071,
+        "longitude": 100.5422
+      },
+      "sameAs": [
+        "https://www.facebook.com/easyhomm/",
+        "https://www.instagram.com/easyhom1969/"
+      ]
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Real Estate Brokerage",
+      "provider": { "@id": "https://easyhom1969.com/#organization" },
+      "areaServed": {
+        "@type": "City",
+        "name": "Bangkok"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "บริการของเรา",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "รับฝากขายอสังหาริมทรัพย์"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "บริการจัดหาอสังหาริมทรัพย์ให้เช่า"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

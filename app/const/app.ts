@@ -1,3 +1,5 @@
+import { FaEnvelope, FaLine, FaLocationDot, FaPhone } from "react-icons/fa6";
+
 export const APP_NAME = "Easy Hom 1969"
 
 export const MENU_APP = [
@@ -23,10 +25,27 @@ export const MENU_APP = [
 ] 
 
 export const CONTACT_LIST = [
-    { href : "mailto:easyhom1969@gmail.com" , label : "easyhom1969@gmail.com"},
-    { href : "tel:0657479789" , label : "06 5747 9789"},
-    { href : "https://maps.app.goo.gl/yEjzQZxQEoho1cnq9" , label : "37 ถนน นางลิ้นจี่ แขวงช่องนนทรี เขตยานนาวา กรุงเทพมหานคร 10120"},
-]
+  {
+    href: "https://line.me/ti/p/@easyhom1969",
+    label: "@easyhom1969",
+    icon: FaLine,
+  },
+  {
+    href: "mailto:easyhom1969@gmail.com",
+    label: "easyhom1969@gmail.com",
+    icon: FaEnvelope,
+  },
+  {
+    href: "tel:0657479789",
+    label: "06 5747 9789",
+    icon: FaPhone,
+  },
+  {
+    href: "https://maps.app.goo.gl/yEjzQZxQEoho1cnq9",
+    label: "37 ถนน นางลิ้นจี่ แขวงช่องนนทรี เขตยานนาวา กรุงเทพมหานคร 10120",
+    icon: FaLocationDot,
+  },
+];
 
 export const HIGHLIGHT_PROJECTS = [
     {

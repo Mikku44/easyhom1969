@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router'
 import { MENU_APP } from '~/const/app'
 import { BurgerButton, MobileDrawer } from './DrawerMenu';
-import { FaFacebook, FaInstagram, FaPhoneVolume } from 'react-icons/fa6';
+import { FaFacebook, FaInstagram, FaLine, FaPhoneVolume } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
 
 export default function Navbar() {
@@ -58,6 +58,11 @@ export default function Navbar() {
                             className=' hover:text-white/70'
                             referrerPolicy='no-referrer'>
                             <FaPhoneVolume className='text-[18px]'/>
+                        </a>
+                        <a href="https://line.me/ti/p/@easyhom1969" target='_blank'
+                            className=' hover:text-white/70'
+                            referrerPolicy='no-referrer'>
+                            <FaLine className='text-[20px]'/>
                         </a>
                     </div>
                 </div>

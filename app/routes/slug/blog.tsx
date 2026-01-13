@@ -191,7 +191,7 @@ export default function BlogDetail({
         </a>
 
         <a
-          href="https://line.me/ti/p/~easyhom1969"
+          href="https://line.me/ti/p/@easyhom1969"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 hover:text-green-700 transition"

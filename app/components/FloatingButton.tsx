@@ -11,9 +11,9 @@ import { LuMessageSquareQuote } from "react-icons/lu";
 const containerVariants = {
   // Animation for the entire menu (hidden to visible)
   hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1, 
-    transition: { staggerChildren: 0.1 } 
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
   },
 };
 
@@ -37,7 +37,7 @@ export default function FloatingContactButton() {
   return (
     // Fixed container to keep the button on the screen
     <div className="fixed bottom-6 right-6 z-50">
-      
+
       {/* 1. Expanded Menu of Contact Options */}
       {isOpen && (
         <motion.div
@@ -47,20 +47,30 @@ export default function FloatingContactButton() {
           animate="visible"
           exit="hidden" // Use 'exit' if you are using AnimatePresence around this component
         >
-          {CONTACT_LIST.map((item, index) => (
-            <motion.a
-              key={index}
-              href={item.href}
-              target={item.href.startsWith('http') ? "_blank" : "_self"}
-              rel={item.href.startsWith('http') ? "noopener noreferrer" : ""}
-              variants={itemVariants}
-              className="flex items-center p-3 rounded-lg shadow-lg text-sm bg-white hover:bg-gray-100 transition duration-150"
-              style={{ color: primaryColor }} // Text color is green
-            >
-              {/* <span className="text-xl mr-3">{item.icon}</span> */}
-              {item.label}
-            </motion.a>
-          ))}
+          {CONTACT_LIST.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <motion.a
+                key={index}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : "_self"}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : ""}
+                variants={itemVariants}
+                className="flex items-center gap-3 p-3 rounded-lg shadow-lg text-sm bg-white hover:bg-gray-100 transition duration-150"
+                style={{ color: primaryColor }}
+              >
+                {/* Icon */}
+                <Icon className="text-lg shrink-0" />
+
+                {/* Label */}
+                <span className="leading-relaxed">
+                  {item.label}
+                </span>
+              </motion.a>
+            );
+          })}
+
         </motion.div>
       )}
 
@@ -70,14 +80,14 @@ export default function FloatingContactButton() {
         style={{ backgroundColor: primaryColor }} // Background is primary green
         onClick={() => setIsOpen(!isOpen)}
         // Rotate animation for the icon inside
-        animate={rotateAnimation} 
+        animate={rotateAnimation}
         transition={{ duration: 0.2 }}
         aria-label={isOpen ? "Close contact menu" : "Open contact menu"}
       >
         {/* Simple "+" icon or a message icon */}
         <span className="text-3xl font-light">
           {/* For production, use an actual icon library */}
-          {isOpen ? "✕" : <LuMessageSquareQuote />} 
+          {isOpen ? "✕" : <LuMessageSquareQuote />}
         </span>
       </motion.button>
     </div>

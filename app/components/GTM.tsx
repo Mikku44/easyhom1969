@@ -1,4 +1,4 @@
-const GTM_ID = 'GTM-XXXXXXX'; // เปลี่ยนเป็น ID ของคุณ
+const GTM_ID = 'GTM-M5ZP9433'; 
 
 export const GTMHead = () => (
   <script

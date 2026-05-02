@@ -1,4 +1,6 @@
+import { AnimatePresence,motion } from "framer-motion";
 import { useState } from "react";
+import { LuPlus } from "react-icons/lu";
 
 const FAQS = [
   {
@@ -43,36 +45,63 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="w-full grid  container-x mx-auto px-4 py-20">
-      <h2 className="text-3xl w-full text-center mb-12">
-        คำถามที่พบบ่อย
-      </h2>
+    <section className="w-full max-w-4xl mx-auto px-6 py-24">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
+          คำถามที่พบบ่อย
+        </h2>
+        <p className="text-slate-500 font-light">
+          ตอบข้อสงสัยเบื้องต้น เพื่อการวางแผนทางการเงินที่ชัดเจน
+        </p>
+      </div>
 
-      <div className="space-y-4">
-        {FAQS.map((item, i) => (
-          <div
-            key={i}
-            className="border border-neutral-200 rounded-2xl px-6 py-5"
-          >
-            <button
-              onClick={() => setOpen(open === i ? null : i)}
-              className="w-full flex justify-between items-center text-left"
+      <div className="space-y-3">
+        {FAQS.map((item, i) => {
+          const isOpen = open === i;
+          return (
+            <div
+              key={i}
+              className={`transition-all duration-300 rounded-2xl ${
+                isOpen 
+                  ? "bg-white shadow-sm border-transparent" 
+                  : "bg-white border border-slate-100 hover:border-slate-200"
+              }`}
             >
-              <span className="text-neutral-800 font-medium">
-                {item.q}
-              </span>
-              <span className="text-xl text-neutral-400">
-                {open === i ? "−" : "+"}
-              </span>
-            </button>
+              <button
+                onClick={() => setOpen(isOpen ? null : i)}
+                className="w-full flex justify-between items-center text-left px-7 py-6 group"
+              >
+                <span className={`text-base md:text-lg transition-colors duration-300 ${
+                  isOpen ? "text-slate-900 font-semibold" : "text-slate-600 font-medium"
+                }`}>
+                  {item.q}
+                </span>
+                
+                <div className={`transition-transform duration-500 rounded-full p-1 ${
+                  isOpen ? "rotate-45 text-slate-900" : "text-slate-400 group-hover:text-slate-600"
+                }`}>
+                  <LuPlus className="text-xl" />
+                </div>
+              </button>
 
-            {open === i && (
-              <p className="mt-4 text-neutral-600 leading-relaxed">
-                {item.a}
-              </p>
-            )}
-          </div>
-        ))}
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className=" pb-8 text-slate-500 leading-relaxed font-light border-t border-slate-200/50 pt-4 mx-7">
+                      {item.a}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

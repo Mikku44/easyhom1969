@@ -171,64 +171,64 @@ export default function BlogDetail({
         </div>
 
         {/* left panel */}
-       <div className="w-full p-5">
-  <div className="sticky top-20 space-y-6">
+        <div className="w-full p-5">
+          <div className="lg:sticky top-20 space-y-6">
 
-    {/* CONTACT */}
-    <div className="bg-white p-6 rounded-2xl border border-gray-200 space-y-5">
-      <h2 className="text-xl font-semibold">ติดต่อเรา</h2>
+            {/* CONTACT */}
+            <div className="bg-white p-6 rounded-2xl border border-gray-200 space-y-5">
+              <h2 className="text-xl font-semibold">ติดต่อเรา</h2>
 
-      <div className="space-y-4 text-sm text-gray-700">
+              <div className="space-y-4 text-sm text-gray-700">
 
-        <a
-          href="tel:0657479789"
-          className="flex items-center gap-3 hover:text-green-700 transition"
-        >
-          <span className="icon-circle bg-green-100 text-green-700">
-            <FaPhoneAlt size={16} />
-          </span>
-          <span>065-747-9789</span>
-        </a>
+                <a
+                  href="tel:0657479789"
+                  className="flex items-center gap-3 hover:text-green-700 transition"
+                >
+                  <span className="icon-circle bg-green-100 text-green-700">
+                    <FaPhoneAlt size={16} />
+                  </span>
+                  <span>065-747-9789</span>
+                </a>
 
-        <a
-          href="https://line.me/ti/p/@easyhom1969"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 hover:text-green-700 transition"
-        >
-          <span className="icon-circle bg-green-100 text-green-700">
-            <FaLine size={18} />
-          </span>
-          <span>@easyhom1969</span>
-        </a>
+                <a
+                  href="https://line.me/ti/p/@easyhom1969"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 hover:text-green-700 transition"
+                >
+                  <span className="icon-circle bg-green-100 text-green-700">
+                    <FaLine size={18} />
+                  </span>
+                  <span>@easyhom1969</span>
+                </a>
 
-        <a
-          href="mailto:easyhom1969@gmail.com"
-          className="flex items-center gap-3 hover:text-green-700 transition"
-        >
-          <span className="icon-circle bg-green-100 text-green-700">
-            <FaEnvelope size={16} />
-          </span>
-          <span>easyhom1969@gmail.com</span>
-        </a>
+                <a
+                  href="mailto:easyhom1969@gmail.com"
+                  className="flex items-center gap-3 hover:text-green-700 transition"
+                >
+                  <span className="icon-circle bg-green-100 text-green-700">
+                    <FaEnvelope size={16} />
+                  </span>
+                  <span>easyhom1969@gmail.com</span>
+                </a>
 
-      </div>
+              </div>
 
-      <a
-        href="/estimate"
-        className="block text-center rounded-full
+              <a
+                href="/#learnmore"
+                className="block text-center rounded-full
                    bg-black/90 px-5 py-3 text-white
                    hover:bg-green-800 transition"
-      >
-        ประเมินวงเงินฟรี
-      </a>
-    </div>
+              >
+                ประเมินวงเงินฟรี
+              </a>
+            </div>
 
-    {/* SHARE */}
-    <ShareSection />
+            {/* SHARE */}
+            <ShareSection />
 
-  </div>
-</div>
+          </div>
+        </div>
 
 
       </div>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "IBM Plex Sans","Kanit","Inter", ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "IBM Plex Sans Thai","Kanit","Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --primary-color : #14962a;
 }
@@ -112,92 +112,72 @@ body {
 
 
 .remark-content {
-  /* Base text styles */
-  @apply text-gray-700 leading-relaxed max-w-full;
+  font-family: "IBM Plex Sans Thai", "Kanit", "Inter", ui-sans-serif, system-ui, sans-serif !important;
+  /* Base text styles: Increased line-height and slightly lighter gray for elegance */
+  @apply text-slate-600 leading-7 max-w-none antialiased;
 
-  /* Headings: Formal, well-separated */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-semibold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-2;
+  /* Headings: Removed borders for a cleaner look, using weight and size for hierarchy */
+  h1, h2, h3, h4 {
+    @apply font-bold text-slate-900 tracking-tight;
   }
 
-  h1 {
-    @apply text-3xl font-extrabold mb-6 mt-10 tracking-tight;
-  }
+  h1 { @apply text-4xl mt-12 mb-8; }
+  h2 { @apply text-2xl mt-10 mb-5; }
+  h3 { @apply text-xl mt-8 mb-4; }
+  h4 { @apply text-lg mt-6 mb-2; }
 
-  h2 {
-    /* Based on your original request: mt-8 mb-4 text-2xl font-semibold */
-    @apply mt-8 mb-4 text-2xl font-semibold;
-  }
+  /* Paragraphs: Using 'relaxed' for better readability */
+  p { @apply my-6 leading-7; }
 
-  h3 {
-    @apply mt-6 mb-3 text-xl font-semibold;
-  }
-
-  h4 {
-    @apply mt-5 mb-2 text-lg font-medium;
-  }
-
-  /* Paragraphs and Blockquotes */
-  p {
-    @apply my-5 text-base;
-  }
-
+  /* Blockquotes: Softened the color, removed the gray background for a "float" look */
   blockquote {
-    @apply border-l-4 border-gray-300 pl-4 py-1 italic text-gray-600 my-6 bg-gray-50/50 rounded-r;
+    @apply border-l-2 border-slate-200 pl-6 my-8 italic text-slate-500;
   }
 
-  /* Links: Subtle styling */
+  /* Links: Clean underline style that only reveals on hover or stays subtle */
   a {
-    @apply text-blue-800 font-medium hover:text-gray-600 underline transition duration-150 ease-in-out no-underline;
+    @apply text-slate-900 underline decoration-slate-300 underline-offset-4 transition-all hover:decoration-blue-500 hover:text-blue-600;
   }
 
-  a:hover {
-    @apply underline;
-  }
+  /* Lists: Better spacing and custom bullet colors */
+  ul { @apply list-disc ml-6 my-6 space-y-3 marker:text-slate-300; }
+  ol { @apply list-decimal ml-6 my-6 space-y-3 marker:text-slate-400 marker:font-medium; }
+  
+  li > p { @apply my-0; }
 
-  /* Lists: Clean and minimal */
-  ul {
-    @apply list-disc ml-5 my-5 space-y-2;
-  }
-
-  ol {
-    @apply list-decimal ml-5 my-5 space-y-2;
-  }
-
-  li>p {
-    @apply my-0;
-    /* Remove vertical margin from paragraphs inside lists */
-  }
-
-  /* Code Blocks and Inline Code */
+  /* Code Blocks: Depth without the heavy dark contrast */
   pre {
-    @apply bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto my-6 text-sm font-mono;
+    @apply bg-slate-50 border border-slate-100 text-slate-800 p-5 rounded-xl overflow-x-auto my-8 text-[13px] leading-6 font-mono;
   }
 
   code {
-    @apply bg-gray-100 text-gray-800 px-1 py-0.5 rounded text-sm font-mono;
+    /* Inline code: Subtle background without the harsh gray */
+    @apply bg-slate-100/80 text-slate-900 px-1.5 py-0.5 rounded-md text-[0.9em] font-mono font-medium;
   }
 
-  /* Tables: Formal look with booktabs style */
+  /* Tables: Zero-border "Airy" style */
   table {
-    @apply w-full my-6 text-sm text-left border-collapse p-1 bg-zinc-50;
+    @apply w-full my-10 text-sm text-left border-hidden;
   }
 
   thead {
-    @apply border-b border-gray-300;
+    @apply border-b border-slate-200;
   }
 
   th {
-    @apply px-4 py-2 font-medium text-gray-900 uppercase tracking-wider;
+    @apply px-4 py-3 font-semibold text-slate-900;
   }
 
   td {
-    @apply px-4 py-2 border-b border-gray-100 align-top;
+    @apply px-4 py-4 border-b border-slate-50 align-middle text-slate-600;
+  }
+
+  /* Image styling (often overlooked) */
+  img {
+    @apply rounded-2xl my-10 ;
+  }
+  hr {
+    @apply border-t border-slate-200 my-10;
   }
 }
 

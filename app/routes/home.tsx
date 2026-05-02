@@ -88,7 +88,7 @@ export default function Home() {
       <div className="absolute w-full h-full bg-linear-180 to-black from-black/30
       flex flex-col md:items-center px-6 justify-center 
       ">
-        <div className="lg:h-[62px]  overflow-clip">
+        <div className="lg:h-[68px]  ">
           <motion.h1
             initial={{
               y: 32, opacity: 0
@@ -160,14 +160,23 @@ export default function Home() {
             <ApplicationForm className="w-full" />
           </div>
           <div className=" text-black/80 relative z-10 font-light h-full w-full max-w-[80%] space-y-2 flex flex-col justify-center">
-            <div className="text-3xl font-medium text-black">
+            <div className="text-3xl font-medium text-black mb-3">
+              <h3 className="text-sm uppercase tracking-[0.2em] text-emerald-600 font-bold">
+                Service Requirements
+              </h3>
               เงื่อนไขการรับบริการ
             </div>
-            <div className="text-xl font-[200]">
-              1.พนักงานประจำเงินเดือน 30,000 ขึ้นไป รวมหนี้ผ่อนทางเดียวได้คอนโดการันตีผู้เช่า
+            <div className="text-xl mb-5 font-[200] flex gap-2">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold text-lg transition-colors group-hover:bg-emerald-600 group-hover:text-white">
+                1
+              </div>
+              พนักงานประจำเงินเดือน 30,000 ขึ้นไป รวมหนี้ผ่อนทางเดียวได้คอนโดการันตีผู้เช่า
             </div>
-            <div className="text-xl font-[200]">
-              2.เจ้าของกิจการจดทะเบียนธุรกิจขั้นต่ำ1ปี มีการหมุนเวียนบัญชีธุรกิจ ประวัติการชำระปกติ
+            <div className="text-xl mb-5 font-[200] flex gap-2">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold text-lg transition-colors group-hover:bg-emerald-600 group-hover:text-white">
+                2
+              </div>
+              เจ้าของกิจการจดทะเบียนธุรกิจขั้นต่ำ1ปี มีการหมุนเวียนบัญชีธุรกิจ ประวัติการชำระปกติ
             </div>
           </div>
 

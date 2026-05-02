@@ -1,63 +1,71 @@
-import { BiCalculator } from "react-icons/bi";
-import { PiPhoneCallBold, PiPhoneCallLight } from "react-icons/pi";
+import { LuSquareArrowOutUpRight, LuCalculator } from "react-icons/lu";
+import { PiPhoneCall } from "react-icons/pi";
 import { Link } from "react-router";
-import { APP_NAME, CONTACT_LIST, MENU_APP } from "~/const/app";
+import { MENU_APP } from "~/const/app";
 
-// Define the custom primary color
-const PRIMARY_BG_COLOR = "#14962a";
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    // Set the entire footer background to the primary color
-
-    <footer className="bg-black  w-full">
-      <div className="container-x px-6 py-12 grid gap-10 lg:grid-cols-5 text-white">
-
-        {/* Brand - Focus on simple white text */}
-        <div className="md:col-span-2 ">
-          <Link className=' w-[150px] ' to="/">
+    <footer className="bg-[#0a0a0a] w-full pt-16 border-t border-white/5">
+      <div className="container-x px-6 pb-16 grid gap-12 lg:grid-cols-5 text-white">
+        
+        {/* Brand Section */}
+        <div className="lg:col-span-2 space-y-6">
+          <Link to="/" className="inline-block opacity-90 hover:opacity-100 transition-opacity">
             <img
               src="/logo/easyhomlogo.png"
               alt="Easy Hom 1969 logo"
-              className=' w-28' />
+              className="w-24  " // Subtle logo integration
+            />
           </Link>
-          {/* <h3 className="font-bold text-2xl">{APP_NAME}</h3> */}
-          <p className="text-lg text-gray-300 font-light mt-3 leading-relaxed max-w-sm">
+          
+          <p className="text-sm text-slate-400 font-light leading-relaxed max-w-xs">
             เราเชื่อว่าบ้านที่ดีเริ่มต้นจากการบริการที่จริงใจ
-            EasyHom1969 พร้อมดูแลคุณทุกขั้นตอน
+            EasyHom1969 พร้อมดูแลคุณทุกขั้นตอนด้วยความเป็นมืออาชีพ
           </p>
 
-          <div className="text-2xl flex gap-2 items-center mt-3 text-green-500">
-            <PiPhoneCallBold />
-            <a target="_blank" href="tel:0657479789" className="">065-747-9789</a>
+          <div className="space-y-4">
+            <a 
+              href="tel:0657479789" 
+              className="group flex items-center gap-3 text-lg font-medium text-white hover:text-green-400 transition-colors"
+            >
+              <span className="p-2 bg-white/5 rounded-full group-hover:bg-green-500/10 transition-colors">
+                <PiPhoneCall className="text-xl" />
+              </span>
+              065-747-9789
+            </a>
+
+            <div className="flex flex-col items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-2xl w-fit">
+              <div className="overflow-hidden rounded-lg bg-white p-1">
+                <img src="/images/line.jpg" className="w-48 h-48 object-cover" alt="line qrcode" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Official Line</p>
+                <div className="flex items-center gap-1.5 text-sm font-medium">
+                  <a href="https://line.me/ti/p/@easyhom1969" target="_blank" className="hover:underline">
+                    @easyhom1969
+                  </a>
+                  <LuSquareArrowOutUpRight className="text-slate-500 text-xs" />
+                </div>
+              </div>
+            </div>
           </div>
-
-
-
-          <div className="overflow-hidden mt-4 rounded-xl w-fit">
-            <img src="/images/line.jpg"
-              className="w-[150px]"
-              alt="line qrcode" />
-
-          </div>
-          <div className="text-sm mt-1">LINE ID : easyhom1969</div>
-
-
         </div>
 
-        {/* Menu */}
+        {/* Quick Links */}
         <div>
-          {/* Section headings are muted white/gray for contrast */}
-          <h4 className="font-medium text-xl tracking-widest uppercase text-gray-200 mb-4">
+          <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-slate-500 mb-6">
             เมนูหลัก
           </h4>
-          <ul className="space-y-3 mc-hd">
+          <ul className="space-y-4">
             {MENU_APP.map((item) => (
-              <li key={item.href} className="nav-item">
+              <li
+              className="nav-item"
+              key={item.href}>
                 <Link
-                  // Links are white, hover is a light, contrasting accent color (or a brightened version of the primary)
-                  className="text-base font-light nav-lnk text-white/60 hover:text-white nav-lnk transition duration-150"
+                  className="text-sm font-light nav-lnk text-slate-400 hover:text-white
+                   hover:translate-x-1 inline-block transition-all duration-200"
                   to={item.href as any}
                 >
                   {item.label}
@@ -67,60 +75,36 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
-        <div className="">
-          <h4 className="font-medium text-xl tracking-widest uppercase text-gray-200 mb-4">
-            ติดต่อเรา
+        {/* Support Section */}
+        <div>
+          <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-slate-500 mb-6">
+            ช่วยเหลือ
           </h4>
-          <ul className="space-y-3 mc-hd">
-            <li className="nav-item">
-              <a
-                href={"/privacy-policy"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
-              >
-                นโยบายข้อมูลส่วนบุคคล
-              </a>
+          <ul className="space-y-4">
+            <li>
+              <Link to="/privacy-policy" className="text-sm font-light text-slate-400 hover:text-white transition-colors">
+                นโยบายความเป็นส่วนตัว
+              </Link>
             </li>
-            <li className="nav-item">
-              <a
-                href={"/terms-of-service"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-base text-white/60 hover:text-white nav-lnk font-light transition duration-150"
-              >
-                ข้อกำหนดในการใช้งาน
-              </a>
+            <li>
+              <Link to="/terms-of-service" className="text-sm font-light text-slate-400 hover:text-white transition-colors">
+                ข้อกำหนดการใช้งาน
+              </Link>
             </li>
-            {/* {CONTACT_LIST.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer" 
-                  className="text-base text-white/60 hover:text-white nav-lnk transition duration-150"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))} */}
           </ul>
-
-
         </div>
 
-        <div className="">
-          <div className="flex gap-2 font-light text-center h-fit
-            bg-linear-0 from-indigo-400 to-indigo-900
-            justify-center py-4 hover:text-black duration-200
-            rounded-xl w-fit px-8 items-center mt-3 ">
-            <a target="_blank" href="/condo-loan-calculator" className="">โปรแกรมคำนวณวงเงินกู้</a>
-          </div>
+        {/* Action & Map */}
+        <div className="space-y-6">
+          <Link 
+            to="/condo-loan-calculator"
+            className="flex items-center justify-center gap-2 px-6 py-3 border border-white/10 rounded-full text-sm font-light hover:bg-white hover:text-black transition-all duration-300"
+          >
+            <LuCalculator />
+            คำนวณวงเงินกู้
+          </Link>
 
-          {/* map */}
-
-          <div className="w-full h-[250px] mt-2 rounded-xl border border-white/10 overflow-hidden">
+          <div className="w-full h-40 rounded-2xl opacity-60 hover:opacity-100 transition-all duration-500 overflow-hidden border border-white/5">
             <iframe
               title="EasyHom1969 Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.138482337388!2d100.5421717!3d13.710061399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f0009938ce3%3A0x89a18b5485f8e905!2sHom%20Sleep%20Salon%20Sathorn%20Rama3!5e0!3m2!1sth!2sth!4v1766056782067!5m2!1sth!2sth"
@@ -129,14 +113,13 @@ export default function Footer() {
             />
           </div>
         </div>
-
-
-
       </div>
 
-      {/* Bottom bar - Separated by a thin line of lighter green/white */}
-      <div className="border-t border-white/10 py-4 text-center text-xs text-gray-400">
-        © {currentYear} EASY HOM. 1969 CO., LTD. All rights reserved.
+      {/* Copyright Bar */}
+      <div className="border-t border-white/5 py-8 text-center">
+        <p className="text-[10px] tracking-[0.1em] text-slate-600 uppercase">
+          © {currentYear} EASY HOM 1969 CO., LTD. — Crafted for better living.
+        </p>
       </div>
     </footer>
   );

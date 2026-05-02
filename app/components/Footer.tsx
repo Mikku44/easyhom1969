@@ -1,3 +1,4 @@
+import { FaLine } from "react-icons/fa6";
 import { LuSquareArrowOutUpRight, LuCalculator } from "react-icons/lu";
 import { PiPhoneCall } from "react-icons/pi";
 import { Link } from "react-router";
@@ -9,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a0a0a] w-full pt-16 border-t border-white/5">
       <div className="container-x px-6 pb-16 grid gap-12 lg:grid-cols-5 text-white">
-        
+
         {/* Brand Section */}
         <div className="lg:col-span-2 space-y-6">
           <Link to="/" className="inline-block opacity-90 hover:opacity-100 transition-opacity">
@@ -19,15 +20,15 @@ export default function Footer() {
               className="w-24  " // Subtle logo integration
             />
           </Link>
-          
+
           <p className="text-sm text-slate-400 font-light leading-relaxed max-w-xs">
             เราเชื่อว่าบ้านที่ดีเริ่มต้นจากการบริการที่จริงใจ
             EasyHom1969 พร้อมดูแลคุณทุกขั้นตอนด้วยความเป็นมืออาชีพ
           </p>
 
           <div className="space-y-4">
-            <a 
-              href="tel:0657479789" 
+            <a
+              href="tel:0657479789"
               className="group flex items-center gap-3 text-lg font-medium text-white hover:text-green-400 transition-colors"
             >
               <span className="p-2 bg-white/5 rounded-full group-hover:bg-green-500/10 transition-colors">
@@ -36,20 +37,21 @@ export default function Footer() {
               065-747-9789
             </a>
 
-            <div className="flex flex-col items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-2xl w-fit">
-              <div className="overflow-hidden rounded-lg bg-white p-1">
-                <img src="/images/line.jpg" className="w-48 h-48 object-cover" alt="line qrcode" />
+            <a
+              href="https://line.me/ti/p/@easyhom1969"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-6 
+              py-3 bg-[#06C755] hover:bg-[#05b34c] text-white rounded-full transition-all duration-200 w-fit shadow-md"
+            >
+              {/* Line Icon (Simplified SVG) */}
+             <FaLine className="size-8"/>
+
+              <div className="flex flex-col">
+                <span className="text-[10px] uppercase font-bold tracking-wider leading-none opacity-80">Line Official</span>
+                <span className="text-lg font-bold leading-tight">Add friend</span>
               </div>
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Official Line</p>
-                <div className="flex items-center gap-1.5 text-sm font-medium">
-                  <a href="https://line.me/ti/p/@easyhom1969" target="_blank" className="hover:underline">
-                    @easyhom1969
-                  </a>
-                  <LuSquareArrowOutUpRight className="text-slate-500 text-xs" />
-                </div>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -61,8 +63,8 @@ export default function Footer() {
           <ul className="space-y-4">
             {MENU_APP.map((item) => (
               <li
-              className="nav-item"
-              key={item.href}>
+                className="nav-item"
+                key={item.href}>
                 <Link
                   className="text-sm font-light nav-lnk text-slate-400 hover:text-white
                    hover:translate-x-1 inline-block transition-all duration-200"
@@ -96,7 +98,7 @@ export default function Footer() {
 
         {/* Action & Map */}
         <div className="space-y-6">
-          <Link 
+          <Link
             to="/condo-loan-calculator"
             className="flex items-center justify-center gap-2 px-6 py-3 border border-white/10 rounded-full text-sm font-light hover:bg-white hover:text-black transition-all duration-300"
           >

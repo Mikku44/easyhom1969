@@ -1,94 +1,81 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { CONTACT_LIST } from "~/const/app";
-import { LuMessageSquareQuote } from "react-icons/lu";
-
-// You will need icons for this, I'll use placeholders but recommend using a library like react-icons
-// Example: import { FiPhone, FiMail, FiMapPin, FiMessageSquare } from 'react-icons/fi';
-
-
-// --- Framer Motion Variants ---
-const containerVariants = {
-  // Animation for the entire menu (hidden to visible)
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  },
-};
-
-const itemVariants = {
-  // Animation for individual buttons (slide up and fade in)
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-  // Optional: Animation for when the menu closes (slide down and fade out)
-  exit: { opacity: 0, y: 20 },
-};
+import { LuPlus } from "react-icons/lu";
 
 export default function FloatingContactButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const primaryColor = "#14962a"; // Your dark green color
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const menuRef = useRef(null);
+  const primaryColor = "#14962a";
 
-  // Main button rotation animation
-  const rotateAnimation = {
-    rotate: isOpen ? 45 : 0, // Rotates the icon 45 degrees when open (e.g., a "+" becomes an "X")
-  };
+  // --- Close when clicking outside ---
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    // Fixed container to keep the button on the screen
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" ref={menuRef}>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 15 }}
+            className="flex flex-col gap-4 mb-4"
+          >
+            {CONTACT_LIST.map((item, index) => (
+              <div key={index} className="flex items-center gap-3 justify-end">
+                {/* Tooltip: Only visible when the specific icon is hovered */}
+                <AnimatePresence>
+                  {hoveredIndex === index && (
+                    <motion.span
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 10 }}
+                      className="text-xs font-medium bg-slate-800 text-white px-2 py-1 rounded shadow-sm whitespace-nowrap"
+                    >
+                      {item.label}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
 
-      {/* 1. Expanded Menu of Contact Options */}
-      {isOpen && (
-        <motion.div
-          className="mb-3 space-y-3"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden" // Use 'exit' if you are using AnimatePresence around this component
-        >
-          {CONTACT_LIST.map((item, index) => {
-            const Icon = item.icon;
+                <motion.a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  whileHover={{ scale: 1.1 }}
+                  className="w-11 h-11 flex items-center justify-center rounded-full bg-white shadow-lg text-slate-600 hover:text-[#06C755] border border-slate-100 transition-colors"
+                >
+                  <item.icon size={20} />
+                </motion.a>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-            return (
-              <motion.a
-                key={index}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : "_self"}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : ""}
-                variants={itemVariants}
-                className="flex items-center gap-3 p-3 rounded-lg shadow-lg text-sm bg-white hover:bg-gray-100 transition duration-150"
-                style={{ color: primaryColor }}
-              >
-                {/* Icon */}
-                <Icon className="text-lg shrink-0" />
-
-                {/* Label */}
-                <span className="leading-relaxed">
-                  {item.label}
-                </span>
-              </motion.a>
-            );
-          })}
-
-        </motion.div>
-      )}
-
-      {/* 2. Main Floating Action Button (FAB) */}
+      {/* Main Toggle Button */}
       <motion.button
-        className="w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-white focus:outline-none transition duration-300 transform hover:scale-105"
-        style={{ backgroundColor: primaryColor }} // Background is primary green
         onClick={() => setIsOpen(!isOpen)}
-        // Rotate animation for the icon inside
-        animate={rotateAnimation}
-        transition={{ duration: 0.2 }}
-        aria-label={isOpen ? "Close contact menu" : "Open contact menu"}
+        whileTap={{ scale: 0.9 }}
+        animate={{ 
+            backgroundColor: isOpen ? "#ffffff" : primaryColor,
+            boxShadow: isOpen ? "0 10px 15px -3px rgba(0,0,0,0.1)" : "0 20px 25px -5px rgba(0,0,0,0.2)"
+        }}
+        className="w-14 h-14 rounded-full flex items-center justify-center transition-colors border-none"
       >
-        {/* Simple "+" icon or a message icon */}
-        <span className="text-3xl font-light">
-          {/* For production, use an actual icon library */}
-          {isOpen ? "✕" : <LuMessageSquareQuote />}
-        </span>
+        <motion.div animate={{ rotate: isOpen ? 135 : 0 }} className={isOpen ? "text-slate-500" : "text-white"}>
+          <LuPlus size={28} />
+        </motion.div>
       </motion.button>
     </div>
   );

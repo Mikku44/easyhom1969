@@ -4,6 +4,8 @@ export default [
     layout("routes/layout.tsx", [
         index("routes/home.tsx"),
         route("/qualifications", "routes/qualifications.tsx"),
+        route("/personal-loan", "routes/personal-loan.tsx"),
+        route("/business-loan", "routes/business-loan.tsx"),
         route("/services", "routes/services.tsx"),
         route("/why-easy-hom1969", "routes/why-easy-hom1969.tsx"),
         route("/clients", "routes/clients.tsx"),
@@ -13,7 +15,6 @@ export default [
         route("/privacy-policy", "routes/privacy-policy.tsx"),
         route("/terms-of-service", "routes/terms-of-service.tsx"),
         route("/condo-loan-calculator", "routes/estimator.tsx"),
- 
 
 
     ]),

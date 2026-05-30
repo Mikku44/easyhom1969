@@ -27,7 +27,7 @@ export default function Services() {
             transition={{
               duration: 0.6
             }}
-            className="lg:text-5xl md:text-3xl text-2xl text-white font-[300] ">
+            className="lg:text-5xl md:text-3xl text-2xl pt-2 text-white font-[300] ">
             บริการกู้บ้านเงินเหลือ คอนโดเงินเหลือ ที่เข้ากับคุณ
           </motion.h1>
         </div>

@@ -61,7 +61,7 @@ export default function BlogPage() {
               transition={{
                 duration: 0.6
               }}
-              className="lg:text-5xl md:text-3xl text-2xl text-white font-[300] ">
+              className="lg:text-5xl md:text-3xl text-2xl text-white font-[300] pt-2">
               บทความและสาระน่ารู้
             </motion.h1>
           </div>

@@ -103,7 +103,7 @@ export default function PersonalLoan() {
                 "เปลี่ยนงานใหม่แต่ยังอยู่ในสายงานเดิม สามารถนับอายุงานต่อเนื่องให้ได้",
               ].map((text, idx) => (
                 <div key={idx} className="flex items-start gap-3.5 group">
-                  <FaCheckCircle className=" text-md mt-1 transition-colors duration-200  text-green-500" />
+                  <FaCheckCircle className=" text-md mt-1 transition-colors duration-200 min-w-[16px]  text-green-500" />
                   <p className="text-neutral-600 text-md md:text-base font-light leading-relaxed">{text}</p>
                 </div>
               ))}

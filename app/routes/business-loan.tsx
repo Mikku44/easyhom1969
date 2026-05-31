@@ -103,7 +103,7 @@ export default function BusinessLoan() {
                 "ผ่อนยาวนานสูงสุด 30-40 ปี (ตามเงื่อนไขสินเชื่อที่อยู่อาศัย) ทำให้ยอดผ่อนต่อเดือนต่ำ ไม่กระทบกระแสเงินสดธุรกิจ",
               ].map((text, idx) => (
                 <div key={idx} className="flex items-start gap-3.5 group">
-                  <FaCheckCircle className="text-green-500 text-md mt-1 transition-colors duration-200 " />
+                  <FaCheckCircle className="text-green-500 text-md mt-1 transition-colors duration-200 min-w-[16px] " />
                   <p className="text-neutral-600 text-md md:text-base font-light leading-relaxed">{text}</p>
                 </div>
               ))}

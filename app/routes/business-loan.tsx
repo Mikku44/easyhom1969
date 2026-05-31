@@ -2,6 +2,7 @@ import { NavLink } from "react-router";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaFileLines, FaBriefcase, FaIdCard } from "react-icons/fa6";
 import { FaCheckCircle } from "react-icons/fa";
+import ApplicationForm from "~/components/ApplicationForm";
 
 export function meta() {
   const siteUrl = "https://easyhom1969.com";
@@ -26,10 +27,10 @@ export default function BusinessLoan() {
       {/* Minimal Hero Section */}
       <section className="relative h-[420px] overflow-hidden bg-neutral-900 flex items-center">
         <div className="absolute inset-0 z-10 bg-linear-to-r from-neutral-950/90 via-neutral-950/50 to-transparent" />
-        
+
         <div className="relative z-20 w-full max-w-5xl mx-auto px-6 md:px-8">
           <div className="max-w-2xl">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -51,22 +52,22 @@ export default function BusinessLoan() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-sm md:text-base text-neutral-300 font-light mt-4 leading-relaxed opacity-90"
             >
-              เสริมสภาพคล่องทางการเงิน ลงทุนต่อยอด หมุนเวียนในระบบ หรือปรับโครงสร้างหนี้ธุรกิจ 
+              เสริมสภาพคล่องทางการเงิน ลงทุนต่อยอด หมุนเวียนในระบบ หรือปรับโครงสร้างหนี้ธุรกิจ
               ด้วยโซลูชันกู้บ้านและคอนโดเงินทอนสูงเพื่อผู้ประกอบการโดยเฉพาะ
             </motion.p>
           </div>
         </div>
 
-        <img 
-          src="/images/business-partner.jpg" 
-          className="h-full w-full object-cover absolute inset-0 opacity-40 object-center" 
-          alt="Business Loan Banner" 
+        <img
+          src="/images/business-partner.jpg"
+          className="h-full w-full object-cover absolute inset-0 opacity-40 object-center"
+          alt="Business Loan Banner"
         />
       </section>
 
       {/* Main Content Section */}
       <section className="max-w-5xl mx-auto px-6 md:px-8 py-20">
-        
+
         {/* Clean Highlight Stats */}
         <div className="grid sm:grid-cols-3 gap-8 mb-20 border-b border-neutral-100 pb-12">
           <div className="text-left">
@@ -88,7 +89,7 @@ export default function BusinessLoan() {
 
         {/* Details & Documents Layout */}
         <div className=" space-y-16">
-          
+
           {/* สิทธิประโยชน์และจุดเด่น แบบ Minimal List */}
           <div>
             <h2 className="text-xl font-medium tracking-tight text-neutral-900 mb-8 flex items-center gap-3">
@@ -114,7 +115,7 @@ export default function BusinessLoan() {
             <h2 className="text-xl font-medium tracking-tight text-neutral-900 mb-8">
               เอกสารประกอบการพิจารณา
             </h2>
-            
+
             <div className="border border-neutral-200 divide-y divide-neutral-200 rounded-xl overflow-hidden">
               {/* Category 1 */}
               <div className="p-6 bg-white grid sm:grid-cols-3 gap-4 sm:gap-6">
@@ -167,7 +168,7 @@ export default function BusinessLoan() {
               ทีมงาน EasyHom1969 พร้อมเข้าช่วยวิเคราะห์งบการเงินและแก้เคสให้ธุรกิจของคุณกู้ผ่านได้อย่างราบรื่นและปลอดภัย
             </p>
           </div>
-          
+
           <NavLink
             to="/contact"
             className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-neutral-900 text-white text-sm font-medium tracking-wide shadow-xs hover:bg-neutral-800 transition duration-200 shrink-0 group"
@@ -177,7 +178,36 @@ export default function BusinessLoan() {
           </NavLink>
         </div>
 
+
+
       </section>
+
+      {/* form */}
+
+
+      <div className="lg:py-12 py-6 relative overflow-hidden">
+        
+        <div className="max-w-6xl  mx-auto flex flex-col-reverse lg:gap-0 gap-5 lg:flex-row items-stretch 
+         px-10 py-10 relative z-10 rounded-[2rem] overflow-hidden">
+
+          {/* The Form */}
+          <div className="w-full lg:w-1/2 flex">
+           
+            <ApplicationForm className="bg-white w-full rounded-[2rem] lg:rounded-r-none" />
+          </div>
+
+          {/* The Image Wrapper */}
+          <div className="w-full lg:w-1/2 flex lg:h-auto h-64">
+            <img
+              src="/images/consultant.jpg"
+              alt="Description"
+            
+              className="w-full h-full object-cover rounded-[2rem] lg:rounded-l-none"
+            />
+          </div>
+
+        </div>
+      </div>
     </main>
   );
 }

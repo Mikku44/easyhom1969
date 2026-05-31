@@ -3,26 +3,35 @@ import { FaEnvelope, FaLine, FaLocationDot, FaPhone } from "react-icons/fa6";
 export const APP_NAME = "Easy Hom 1969"
 
 export const MENU_APP = [
-    {
-        href : "/" , label : "หน้าแรก"
-    },
-    {
-        href : "/qualifications" , label : "คุณสมบัติผู้สมัคร"
-    },
-    {
-        href : "/why-easy-hom1969" , label : "ทำไม่ต้องเป็น EasyHom1969"
-    },
-    {
-        href : "/services" , label : "บริการที่เข้ากับคุณ"
-    },
-    
-    {
-        href : "/blogs" , label : "บทความ"
-    },
-    {
-        href : "/contact" , label : "ติดต่อเรา"
-    },
-] 
+  {
+    href: "/",
+    label: "หน้าแรก"
+  },
+  {
+    href: "/qualifications",
+    label: "คุณสมบัติผู้สมัคร",
+    children: [
+      { href: "/business-loan", label: "สินเชื่อธุรกิจ" },
+      { href: "/personal-loan", label: "สินเชื่อส่วนบุคคล" }
+    ]
+  },
+  {
+    href: "/why-easy-hom1969",
+    label: "ทำไม่ต้องเป็น EasyHom1969"
+  },
+  {
+    href: "/services",
+    label: "บริการที่เข้ากับคุณ"
+  },
+  {
+    href: "/blogs",
+    label: "บทความ"
+  },
+  {
+    href: "/contact",
+    label: "ติดต่อเรา"
+  },
+];
 
 export const CONTACT_LIST = [
   {

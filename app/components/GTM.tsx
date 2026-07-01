@@ -1,4 +1,4 @@
-const GTM_ID = 'GTM-M5ZP9433';
+const GTM_ID = 'GTM-5WWN7MHS';
 const GTAG_ID = 'AW-17958922166';
 
 export const GTMHead = () => (

@@ -8,7 +8,7 @@ export default function BlogCard({ blog }: { blog: IBlogModel }) {
       to={`/blogs/${blog?.slug || "#"}`}
       className="
         relative group min-w-[250px] w-full h-[350px] rounded-xl overflow-hidden
-        touch-manipulation 
+        touch-manipulation select-none
       "
     >
       {/* Logo */}

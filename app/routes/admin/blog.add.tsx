@@ -2,10 +2,8 @@ import { Form, redirect, useActionData, type ActionFunctionArgs } from "react-ro
 import { useState } from "react";
 import { blogService } from "~/services/blogService";
 import { v4 as uuidv4 } from "uuid";
-import { Minus, Image as ImageIcon } from "lucide-react";
+import { Minus, Image as ImageIcon, Loader2 } from "lucide-react"; // Added Loader2 icon
 import MarkdownEditor from "~/components/MarkdownEditor";
-// import { images_file } from "public/images/image_files";
-
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
@@ -17,7 +15,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const author = formData.get("author")?.toString() || "";
   const contents = formData.get("contents")?.toString() || "";
 
-  // Receive JSON from hidden input
   const imagesJSON = formData.get("imagesJSON")?.toString() || "[]";
   const images = JSON.parse(imagesJSON);
 
@@ -60,9 +57,12 @@ export default function BlogAddPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
-  // Auto-generate slug from title
-  const generateSlug = (title: string) => {
-    const base = title
+  // Loading state for the automatic translation
+  const [isTranslating, setIsTranslating] = useState(false);
+
+  // Helper to format a string into a clean URL slug
+  const formatToSlug = (text: string) => {
+    const base = text
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");
@@ -70,18 +70,44 @@ export default function BlogAddPage() {
     return `${base}-${shortId}`;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-
-    if (name === "title") {
+  // Free Client-Side Translation Function (Google Apps Script API Mirror)
+  const translateAndGenerateSlug = async (text: string) => {
+    if (!text.trim()) return;
+    setIsTranslating(true);
+    try {
+      // Using a completely free public translate API (Translates any language to English 'en')
+      const response = await fetch(
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=${encodeURIComponent(text)}`
+      );
+      const data = await response.json();
+      
+      // Google returns an array structure where index [0][0][0] contains the translated string
+      const translatedText = data?.[0]?.[0]?.[0] || text;
+      
       setForm((prev) => ({
         ...prev,
-        slug: generateSlug(value),
-        [name]: value
+        slug: formatToSlug(translatedText),
       }));
-    } else {
-      setForm((prev) => ({ ...prev, [name]: value }));
+    } catch (error) {
+      console.error("Translation failed, falling back to original text:", error);
+      // Fallback to translating using character formatting only if network fails
+      setForm((prev) => ({
+        ...prev,
+        slug: formatToSlug(text),
+      }));
+    } finally {
+      setIsTranslating(false);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Trigger translation when the user finishes typing and leaves the title field
+  const handleTitleBlur = () => {
+    translateAndGenerateSlug(form.title);
   };
 
   const handleOpenModal = () => {
@@ -98,7 +124,7 @@ export default function BlogAddPage() {
     handleCloseModal();
   };
 
-  const images_file : any = [];
+  const images_file: any = [];
 
   const toggleSelect = (filename: string) => {
     const imageObject = images_file.find(i => i.filename === filename);
@@ -128,21 +154,30 @@ export default function BlogAddPage() {
             type="text"
             value={form.title}
             onChange={handleChange}
+            onBlur={handleTitleBlur} // Trigger translation on blur
             className="w-full input rounded-sm px-3 py-2 border"
+            placeholder="Enter title (will translate to English slug automatically)"
             required
           />
         </div>
 
-        {/* Slug (Auto-generated) */}
+        {/* Slug (Auto-generated & Translated) */}
         <div>
-          <label className="block font-medium mb-1">Slug (Auto Generated)</label>
+          <div className="flex justify-between items-center mb-1">
+            <label className="block font-medium">Slug (Auto Generated & Translated)</label>
+            {isTranslating && (
+              <span className="text-xs text-blue-600 flex items-center gap-1">
+                <Loader2 size={12} className="animate-spin" /> Translating title...
+              </span>
+            )}
+          </div>
           <input
             name="slug"
             type="text"
             value={form.slug}
-             onChange={handleChange}
+            onChange={handleChange}
             className="w-full input rounded-sm px-3 py-2 bg-gray-100 text-gray-500 border"
-            placeholder="Enter title to generate slug"
+            placeholder="Slug will appear here..."
             required
           />
         </div>
@@ -198,7 +233,6 @@ export default function BlogAddPage() {
             </button>
           </div>
 
-          {/* Preview selected images */}
           {images.length > 0 && (
             <div className="mt-3 grid grid-cols-4 gap-2">
               {images.map((url, idx) => (
@@ -213,7 +247,6 @@ export default function BlogAddPage() {
           )}
         </div>
 
-        {/* Hidden input for images JSON */}
         <input type="hidden" name="imagesJSON" value={JSON.stringify(images)} />
 
         {/* Contents */}
@@ -251,12 +284,12 @@ export default function BlogAddPage() {
               </button>
             </div>
 
-              <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center">
               <div className="text-sm text-gray-500 mt-1">
                 {selectedImages.length} selected
               </div>
 
-              <div className="">
+              <div>
                 <input type="text" onChange={(e) => setSearchImage(e.target.value)} className="input rounded-sm" placeholder="Search" />
               </div>
             </div>

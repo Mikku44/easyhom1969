@@ -12,10 +12,12 @@ import {
   Heading1,
   Heading2,
   Heading3,
-  Quote
+  Quote,
+  Table as TableIcon
 } from "lucide-react";
 
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface MarkdownEditorProps {
   name?: string;
@@ -56,7 +58,7 @@ export default function MarkdownEditor({
   };
 
   const insertAtCursor = (text: string) => {
-    const textarea = document.querySelector('textarea[name="markdown-editor"]') as HTMLTextAreaElement;
+    const textarea = document.querySelector(`textarea[name="${name}"]`) as HTMLTextAreaElement;
     if (!textarea) return;
 
     const start = textarea.selectionStart;
@@ -72,7 +74,11 @@ export default function MarkdownEditor({
     }, 0);
   };
 
-
+  const insertTable = () => {
+    const template =
+      "\n| Column 1 | Column 2 |\n| :--- | :--- |\n| Row 1 | Row 1 |\n| Row 2 | Row 2 |\n";
+    insertAtCursor(template);
+  };
 
   return (
     <div className="border relative border-gray-300 rounded-lg overflow-hidden">
@@ -175,6 +181,14 @@ export default function MarkdownEditor({
         >
           <ImageIcon size={18} />
         </button>
+        <button
+          type="button"
+          onClick={insertTable}
+          className="p-2 hover:bg-gray-200 rounded transition"
+          title="Insert Table"
+        >
+          <TableIcon size={18} />
+        </button>
 
         <div className="flex-1"></div>
 
@@ -205,20 +219,35 @@ export default function MarkdownEditor({
 
         {/* Preview */}
         {showPreview && (
-
-          <div className="prose p-6 prose-lg max-w-none remark-content">
-            <ReactMarkdown>{value}</ReactMarkdown>
-            {/* <RemarkPreview value={blog.contents} /> */}
+          <div className="prose p-6 prose-lg max-w-none remark-content overflow-x-auto">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                table: ({ node, ...props }) => (
+                  <div className="overflow-x-auto">
+                    <table className="border-collapse w-full" {...props} />
+                  </div>
+                ),
+                th: ({ node, ...props }) => (
+                  <th
+                    className="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold"
+                    {...props}
+                  />
+                ),
+                td: ({ node, ...props }) => (
+                  <td className="border border-gray-300 px-3 py-2" {...props} />
+                )
+              }}
+            >
+              {value}
+            </ReactMarkdown>
           </div>
-
         )}
-
-
       </div>
 
       {/* Footer Info */}
       <div className="bg-gray-50 border-t border-gray-300 px-4 py-2 text-xs text-gray-500 flex justify-between">
-        <span>Markdown supported</span>
+        <span>Markdown supported (tables via GFM)</span>
         <span>{value.length} characters</span>
       </div>
     </div>

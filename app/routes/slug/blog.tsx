@@ -4,6 +4,7 @@ import { blogService } from "~/services/blogService";
 import NotFound from "~/components/NotFound";
 import BlogCard from "~/components/BlogCard";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { Route } from "./+types/blog";
 import { ChevronRight } from "lucide-react";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -112,7 +113,27 @@ export default function BlogDetail({
               )} */}
               {/* Blog Content */}
               <div className="prose prose-lg max-w-none remark-content">
-                <ReactMarkdown>{blog.contents}</ReactMarkdown>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    table: ({ node, ...props }) => (
+                      <div className="overflow-x-auto">
+                        <table className="border-collapse w-full" {...props} />
+                      </div>
+                    ),
+                    th: ({ node, ...props }) => (
+                      <th
+                        className="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold"
+                        {...props}
+                      />
+                    ),
+                    td: ({ node, ...props }) => (
+                      <td className="border border-gray-300 px-3 py-2" {...props} />
+                    )
+                  }}
+                >
+                  {blog.contents}
+                </ReactMarkdown>
                 {/* <RemarkPreview value={blog.contents} /> */}
               </div>
               <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 py-4">

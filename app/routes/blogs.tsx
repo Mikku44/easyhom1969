@@ -4,7 +4,7 @@ import BlogCard from "~/components/BlogCard";
 import { useLoaderData, Link } from "react-router"; // Import Link for navigation
 import { motion } from "framer-motion";
 // Define the limit constant (good practice)
-const LIMIT = 4;
+const LIMIT = 20;
 
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);

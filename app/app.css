@@ -114,13 +114,12 @@ body {
 }
 
 
-
 .remark-content {
   font-family: "IBM Plex Sans Thai", "Kanit", "Inter", ui-sans-serif, system-ui, sans-serif !important;
-  /* Base text styles: Increased line-height and slightly lighter gray for elegance */
-  @apply text-slate-600 leading-7 max-w-none antialiased;
+  /* Base text styles: Clean, mid-scale sizing and line height */
+  @apply text-slate-600 leading-relaxed max-w-none antialiased text-base;
 
-  /* Headings: Removed borders for a cleaner look, using weight and size for hierarchy */
+  /* Headings: Balanced hierarchy with comfortable margins */
   h1,
   h2,
   h3,
@@ -129,62 +128,62 @@ body {
   }
 
   h1 {
-    @apply text-4xl mt-12 mb-8;
+    @apply text-3xl mt-8 mb-5;
   }
 
   h2 {
-    @apply text-2xl mt-10 mb-5;
+    @apply text-2xl mt-6 mb-4;
   }
 
   h3 {
-    @apply text-xl mt-8 mb-4;
+    @apply text-xl mt-5 mb-3;
   }
 
   h4 {
-    @apply text-lg mt-6 mb-2;
+    @apply text-lg mt-4 mb-2;
   }
 
-  /* Paragraphs: Using 'relaxed' for better readability */
+  /* Paragraphs: Standard clean text spacing */
   p {
-    @apply my-6 leading-7;
+    @apply my-4 leading-relaxed;
   }
 
-  /* Blockquotes: Softened the color, removed the gray background for a "float" look */
+  /* Blockquotes: Elegant, moderate indents */
   blockquote {
-    @apply border-l-2 border-slate-200 pl-6 my-8 italic text-slate-500;
+    @apply border-l-2 border-slate-200 pl-5 my-6 italic text-slate-500;
   }
 
-  /* Links: Clean underline style that only reveals on hover or stays subtle */
+  /* Links */
   a {
     @apply text-slate-900 underline decoration-slate-300 underline-offset-4 transition-all hover:decoration-blue-500 hover:text-blue-600;
   }
 
-  /* Lists: Better spacing and custom bullet colors */
+  /* Lists: Standard readable spacing */
   ul {
-    @apply list-disc ml-6 my-6 space-y-3 marker:text-slate-300;
+    @apply list-disc ml-6 my-5 space-y-2 marker:text-slate-300;
   }
 
   ol {
-    @apply list-decimal ml-6 my-6 space-y-3 marker:text-slate-400 marker:font-medium;
+    @apply list-decimal ml-6 my-5 space-y-2 marker:text-slate-400 marker:font-medium;
   }
 
   li>p {
     @apply my-0;
   }
 
-  /* Code Blocks: Depth without the heavy dark contrast */
+  /* Code Blocks: Professional spacing with clean readability */
   pre {
-    @apply bg-slate-50 border border-slate-100 text-slate-800 p-5 rounded-xl overflow-x-auto my-8 text-[13px] leading-6 font-mono;
+    @apply bg-slate-50 border border-slate-100 text-slate-800 p-4 rounded-xl overflow-x-auto my-6 text-[13px] leading-6 font-mono;
   }
 
   code {
-    /* Inline code: Subtle background without the harsh gray */
+    /* Inline code: Slightly padded accent */
     @apply bg-slate-100/80 text-slate-900 px-1.5 py-0.5 rounded-md text-[0.9em] font-mono font-medium;
   }
 
-  /* Tables: Zero-border "Airy" style */
+  /* Tables: Well-proportioned, comfortable row padding */
   table {
-    @apply w-full my-10 text-sm text-left border-hidden;
+    @apply w-full my-8 text-sm text-left border-hidden;
   }
 
   thead {
@@ -192,49 +191,47 @@ body {
   }
 
   th {
-    @apply px-4 py-3 font-semibold text-slate-900;
+    @apply px-4 py-2.5 font-semibold text-slate-900;
   }
 
   td {
-    @apply px-4 py-4 border-b border-slate-50 align-middle text-slate-600;
+    @apply px-4 py-3 border-b border-slate-50 align-middle text-slate-600;
   }
 
-  /* Image styling (often overlooked) */
+  /* Image styling */
   img {
-    @apply rounded-2xl my-10;
+    @apply rounded-xl my-8;
   }
 
   hr {
-    @apply border-t border-slate-200 my-10;
+    @apply border-t border-slate-200 my-8;
   }
 
-  /* เพิ่มโค้ดนี้ในไฟล์ CSS หลักของคุณ เช่น app.css */
+  /* Markdown Preview Fallback: Balanced table dimensions */
   .markdown-preview table {
     width: 100%;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
     border-collapse: collapse;
+    font-size: 0.9375rem;
+    /* ~15px equivalent */
   }
 
   .markdown-preview th {
     background-color: #f3f4f6;
-    /* bg-gray-100 */
     font-weight: 600;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.625rem;
     border: 1px solid #e5e7eb;
-    /* border-gray-200 */
     text-align: left;
   }
 
   .markdown-preview td {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.625rem;
     border: 1px solid #e5e7eb;
-    /* border-gray-200 */
   }
 
   .markdown-preview tr:nth-child(even) {
     background-color: #f9fafb;
-    /* bg-gray-50 สลับสีแถวให้ดูง่าย */
   }
 }
 

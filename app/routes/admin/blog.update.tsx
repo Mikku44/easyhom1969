@@ -6,18 +6,14 @@ import {
   type ActionFunctionArgs,
   type LoaderFunctionArgs,
 } from "react-router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { blogService } from "~/services/blogService";
 import { v4 as uuidv4 } from "uuid";
 import { Minus, Image as ImageIcon } from "lucide-react";
-// import { images_file } from "public/images/image_files";
 
 import type { IBlogModel } from "~/models/blog";
 import MarkdownEditor from "~/components/MarkdownEditor";
 
-// ---------------------------------------
-// LOADER
-// ---------------------------------------
 export async function loader({ params }: LoaderFunctionArgs) {
   const id = params.blogId;
   if (!id) throw new Error("Blog ID is required");
@@ -28,9 +24,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
   return { blog };
 }
 
-// ---------------------------------------
-// ACTION (UPDATE)
-// ---------------------------------------
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   const id = params.blogId;
   if (!id) return { error: "Missing blog ID" };
@@ -66,15 +59,10 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
   return redirect("/blogs");
 };
 
-// ---------------------------------------
-// COMPONENT
-// ---------------------------------------
-
 export default function BlogUpdatePage() {
   const actionData = useActionData<typeof action>();
   const { blog } = useLoaderData<typeof loader>();
 
-  // Pre-filled form
   const [form, setForm] = useState({
     title: blog.title || "",
     slug: blog.slug || "",
@@ -84,15 +72,12 @@ export default function BlogUpdatePage() {
     contents: blog.contents || "",
   });
 
-  // Images
   const [images, setImages] = useState<string[]>(blog.images || []);
   const [searchImage, setSearchImage] = useState("");
-
-  // Modal
+  const [imageUrlInput, setImageUrlInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
-  // Auto-generate slug
   const generateSlug = (title: string) => {
     const base = title
       .toLowerCase()
@@ -145,145 +130,166 @@ export default function BlogUpdatePage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">
-      <h1 className="text-3xl font-bold mb-6">Update Blog</h1>
+      <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <h1 className="text-2xl font-[300] text-gray-900 mb-8">Update Blog</h1>
 
-      {actionData?.error && (
-        <p className="mb-4 text-red-600">{actionData.error}</p>
-      )}
+        {actionData?.error && (
+          <p className="mb-4 text-red-600 text-sm bg-red-50 border border-red-200 p-3 rounded-lg">
+            {actionData.error}
+          </p>
+        )}
 
-      <Form method="post" className="space-y-6">
-        {/* Title */}
-        <div>
-          <label className="block font-medium mb-1">Title</label>
-          <input
-            name="title"
-            type="text"
-            value={form.title}
-            onChange={handleChange}
-            className="w-full input rounded-sm px-3 py-2 border"
-            required
-          />
-        </div>
+        <Form method="post" className="space-y-6">
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Title</label>
+            <input
+              name="title"
+              type="text"
+              value={form.title}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors"
+              required
+            />
+          </div>
 
-        {/* Slug */}
-        <div>
-          <label className="block font-medium mb-1">Slug</label>
-          <input
-            name="slug"
-            type="text"
-            value={form.slug}
-            readOnly
-            className="w-full input rounded-sm px-3 py-2 bg-gray-100 text-gray-500 border"
-            required
-          />
-        </div>
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Slug</label>
+            <input
+              name="slug"
+              type="text"
+              value={form.slug}
+              readOnly
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-500 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors"
+              required
+            />
+          </div>
 
-        {/* Author */}
-        <div>
-          <label className="block font-medium mb-1">Author</label>
-          <input
-            name="author"
-            type="text"
-            value={form.author}
-            onChange={handleChange}
-            className="w-full input rounded-sm px-3 py-2 border"
-          />
-        </div>
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Author</label>
+            <input
+              name="author"
+              type="text"
+              value={form.author}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors"
+            />
+          </div>
 
-        {/* Excerpt */}
-        <div>
-          <label className="block font-medium mb-1">Excerpt</label>
-          <textarea
-            name="excerpt"
-            value={form.excerpt}
-            onChange={handleChange}
-            className="w-full input rounded-sm px-3 py-2 h-24 border"
-          />
-        </div>
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Excerpt</label>
+            <textarea
+              name="excerpt"
+              value={form.excerpt}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors h-24 resize-none"
+            />
+          </div>
 
-        {/* Tags */}
-        <div>
-          <label className="block font-medium mb-1">Tags</label>
-          <input
-            name="tags"
-            type="text"
-            value={form.tags}
-            onChange={handleChange}
-            className="w-full input rounded-sm px-3 py-2 border"
-          />
-        </div>
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Tags</label>
+            <input
+              name="tags"
+              type="text"
+              value={form.tags}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors"
+            />
+          </div>
 
-        {/* Image Picker */}
-        <div>
-          <label className="block font-medium mb-1">Blog Images</label>
-          <button
-            type="button"
-            onClick={handleOpenModal}
-            className="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition flex items-center gap-2"
-          >
-            <ImageIcon size={16} /> Select Images ({images.length})
-          </button>
-
-          {/* {JSON.stringify(images)} */}
-
-       
-
-          {images.length > 0 && (
-            <div className="mt-3 grid grid-cols-4 gap-2">
-              {images.map((url, idx) => (
-                <img
-                  key={idx}
-                  src={url}
-                  className="w-full h-24 object-cover border rounded-lg"
-                />
-              ))}
-            </div>
-          )}
-        </div>
-
-        <input type="hidden" name="imagesJSON" value={JSON.stringify(images)} />
-
-        {/* Contents */}
-        <div>
-          <label className="block font-medium mb-1">Article Contents</label>
-          <MarkdownEditor
-            name="contents"
-            value={form.contents}
-            onChange={(v) => setForm((p) => ({ ...p, contents: v }))}
-            minHeight="500px"
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-5 py-2 rounded shadow hover:bg-blue-700"
-        >
-          Update Blog
-        </button>
-      </Form>
-
-      {/* IMAGE MODAL */}
-      {isOpen && (
-        <section className="w-full h-screen fixed bg-black/30 top-0 left-0 z-[99] flex items-center justify-center">
-          <div className="bg-white rounded-xl w-full h-full max-w-[80vw] max-h-[80vh] p-5 flex flex-col">
-            <div className="flex justify-between">
-              <h2 className="text-2xl font-bold">Select Blog Images</h2>
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Blog Images</label>
+            <div className="flex gap-2 mb-3">
+              <input
+                type="text"
+                value={imageUrlInput}
+                onChange={(e) => setImageUrlInput(e.target.value)}
+                placeholder="Paste image URL..."
+                className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] text-sm focus:outline-none focus:border-[--primary-color] transition-colors"
+              />
               <button
-                className="p-2 rounded hover:bg-gray-200"
-                onClick={handleCloseModal}
+                type="button"
+                onClick={() => {
+                  if (imageUrlInput.trim()) {
+                    setImages((prev) => [...prev, imageUrlInput.trim()]);
+                    setImageUrlInput("");
+                  }
+                }}
+                className="bg-gray-900 text-white font-[300] rounded-xl px-4 transition-all duration-300 hover:bg-gray-700 text-sm cursor-pointer"
               >
-                <Minus size={22} />
+                Add
+              </button>
+              <button
+                type="button"
+                onClick={handleOpenModal}
+                className="flex items-center gap-2 bg-gray-900 text-white font-[300] rounded-xl py-2.5 px-5 transition-all duration-300 hover:bg-gray-700 text-sm cursor-pointer"
+              >
+                <ImageIcon size={16} /> Browse ({images.length})
               </button>
             </div>
 
+            {images.length > 0 && (
+              <div className="mt-3 grid grid-cols-4 gap-2">
+                {images.map((url, idx) => (
+                  <div key={idx} className="relative group">
+                    <img
+                      src={url}
+                      alt={`Selected ${idx + 1}`}
+                      className="w-full h-24 object-cover border border-gray-200 rounded-lg"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setImages((prev) => prev.filter((_, i) => i !== idx))}
+                      className="absolute top-1 right-1 w-6 h-6 bg-black/60 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <input type="hidden" name="imagesJSON" value={JSON.stringify(images)} />
+
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Article Contents</label>
+            <MarkdownEditor
+              name="contents"
+              value={form.contents}
+              onChange={(v) => setForm((p) => ({ ...p, contents: v }))}
+              minHeight="500px"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-gray-900 text-white font-[300] rounded-xl py-3 px-6 transition-all duration-300 hover:bg-gray-700 cursor-pointer"
+          >
+            Update Blog
+          </button>
+        </Form>
+      </div>
+
+      {isOpen && (
+        <section className="w-full h-screen fixed bg-black/30 top-0 left-0 z-[99] flex items-center justify-center">
+          <div className="bg-white rounded-xl w-full h-full max-w-[80vw] max-h-[80vh] p-5 flex flex-col">
             <div className="flex justify-between items-center">
-              <div className="text-sm text-gray-500 mt-1">
+              <h2 className="text-2xl font-[300] text-gray-900">Select Blog Images</h2>
+              <button
+                className="p-2 rounded hover:bg-gray-100 cursor-pointer"
+                onClick={handleCloseModal}
+              >
+                <Minus size={22} className="text-zinc-400" />
+              </button>
+            </div>
+
+            <div className="flex justify-between items-center mt-2">
+              <div className="text-sm text-gray-400 font-[300]">
                 {selectedImages.length} selected
               </div>
-
-              <div className="">
-                <input type="text" onChange={(e) => setSearchImage(e.target.value)} className="input rounded-sm" placeholder="Search" />
+              <div>
+                <input type="text" onChange={(e) => setSearchImage(e.target.value)} className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-sm" placeholder="Search" />
               </div>
             </div>
 
@@ -296,8 +302,8 @@ export default function BlogUpdatePage() {
                   <div
                     key={item.filename}
                     onClick={() => toggleSelect(item.filename)}
-                    className={`cursor-pointer max-w-[150px] relative rounded-lg overflow-hidden border-4 ${
-                      active ? "border-blue-500" : "border-transparent"
+                    className={`cursor-pointer max-w-[150px] relative rounded-lg overflow-hidden border-4 transition-all duration-150 ${
+                      active ? "border-[--primary-color]" : "border-transparent"
                     }`}
                   >
                     <img
@@ -305,25 +311,25 @@ export default function BlogUpdatePage() {
                       className="w-full h-full object-cover"
                     />
                     {active && (
-                      <div className="absolute inset-0 bg-blue-500/30"></div>
+                      <div className="absolute inset-0 bg-[--primary-color]/20"></div>
                     )}
                   </div>
                 );
               })}
             </div>
 
-            <div className="flex justify-end pt-3 border-t mt-3">
+            <div className="flex justify-end pt-3 border-t border-gray-200 mt-3">
               <button
                 type="button"
                 onClick={handleCloseModal}
-                className="px-4 py-2 mr-3 rounded hover:bg-gray-100"
+                className="px-4 py-2 mr-3 text-gray-500 rounded hover:bg-gray-100 cursor-pointer font-[300]"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleApplyImages}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 cursor-pointer font-[300]"
               >
                 Apply ({selectedImages.length})
               </button>

@@ -21,9 +21,12 @@ export default [
 
     
     // admin
-    route("/admin/blog/add", "routes/admin/blog.add.tsx"),
-    route("/admin/blog/list", "routes/admin/blog.list.tsx"),
-    route("/admin/blog/update/:blogId", "routes/admin/blog.update.tsx"),
+    route("/admin/login", "routes/admin/login.tsx"),
+    layout("routes/admin/layout.tsx", [
+        route("/admin/blog/add", "routes/admin/blog.add.tsx"),
+        route("/admin/blog/list", "routes/admin/blog.list.tsx"),
+        route("/admin/blog/update/:blogId", "routes/admin/blog.update.tsx"),
+    ]),
 
 
     // api

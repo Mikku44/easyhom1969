@@ -1,8 +1,8 @@
-import { Form, redirect, useActionData, type ActionFunctionArgs } from "react-router";
+import { redirect, type ActionFunctionArgs } from "react-router";
 import { useState } from "react";
 import { blogService } from "~/services/blogService";
 import { v4 as uuidv4 } from "uuid";
-import { Minus, Image as ImageIcon, Loader2 } from "lucide-react"; // Added Loader2 icon
+import { Minus, Image as ImageIcon, Loader2 } from "lucide-react";
 import MarkdownEditor from "~/components/MarkdownEditor";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
@@ -37,9 +37,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 };
 
 export default function BlogAddPage() {
-  const actionData = useActionData<typeof action>();
-
-  // Form state
   const [form, setForm] = useState({
     title: "",
     slug: "",
@@ -49,18 +46,13 @@ export default function BlogAddPage() {
     contents: "",
   });
 
-  // Image state
   const [images, setImages] = useState<string[]>([]);
   const [searchImage, setSearchImage] = useState("");
-
-  // Modal state
+  const [imageUrlInput, setImageUrlInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
-
-  // Loading state for the automatic translation
   const [isTranslating, setIsTranslating] = useState(false);
 
-  // Helper to format a string into a clean URL slug
   const formatToSlug = (text: string) => {
     const base = text
       .toLowerCase()
@@ -70,27 +62,21 @@ export default function BlogAddPage() {
     return `${base}-${shortId}`;
   };
 
-  // Free Client-Side Translation Function (Google Apps Script API Mirror)
   const translateAndGenerateSlug = async (text: string) => {
     if (!text.trim()) return;
     setIsTranslating(true);
     try {
-      // Using a completely free public translate API (Translates any language to English 'en')
       const response = await fetch(
         `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=${encodeURIComponent(text)}`
       );
       const data = await response.json();
-      
-      // Google returns an array structure where index [0][0][0] contains the translated string
       const translatedText = data?.[0]?.[0]?.[0] || text;
-      
       setForm((prev) => ({
         ...prev,
         slug: formatToSlug(translatedText),
       }));
     } catch (error) {
       console.error("Translation failed, falling back to original text:", error);
-      // Fallback to translating using character formatting only if network fails
       setForm((prev) => ({
         ...prev,
         slug: formatToSlug(text),
@@ -105,7 +91,6 @@ export default function BlogAddPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Trigger translation when the user finishes typing and leaves the title field
   const handleTitleBlur = () => {
     translateAndGenerateSlug(form.title);
   };
@@ -139,158 +124,174 @@ export default function BlogAddPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">
-      <h1 className="text-3xl font-bold mb-6">Create New Blog</h1>
+      <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <h1 className="text-2xl font-[300] text-gray-900 mb-8">Create New Blog</h1>
 
-      {actionData?.error && (
-        <p className="mb-4 text-red-600">{actionData.error}</p>
-      )}
+        <form method="post" target="_blank" className="space-y-6">
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Title</label>
+            <input
+              name="title"
+              type="text"
+              value={form.title}
+              onChange={handleChange}
+              onBlur={handleTitleBlur}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors"
+              placeholder="Enter title (will translate to English slug automatically)"
+              required
+            />
+          </div>
 
-      <Form method="post" className="space-y-6">
-        {/* Title */}
-        <div>
-          <label className="block font-medium mb-1">Title</label>
-          <input
-            name="title"
-            type="text"
-            value={form.title}
-            onChange={handleChange}
-            onBlur={handleTitleBlur} // Trigger translation on blur
-            className="w-full input rounded-sm px-3 py-2 border"
-            placeholder="Enter title (will translate to English slug automatically)"
-            required
-          />
-        </div>
+          <div>
+            <div className="flex justify-between items-center mb-1.5">
+              <label className="block text-gray-500 text-sm font-[300]">Slug (Auto Generated & Translated)</label>
+              {isTranslating && (
+                <span className="text-xs text-blue-600 flex items-center gap-1">
+                  <Loader2 size={12} className="animate-spin" /> Translating title...
+                </span>
+              )}
+            </div>
+            <input
+              name="slug"
+              type="text"
+              value={form.slug}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-500 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors"
+              placeholder="Slug will appear here..."
+              required
+            />
+          </div>
 
-        {/* Slug (Auto-generated & Translated) */}
-        <div>
-          <div className="flex justify-between items-center mb-1">
-            <label className="block font-medium">Slug (Auto Generated & Translated)</label>
-            {isTranslating && (
-              <span className="text-xs text-blue-600 flex items-center gap-1">
-                <Loader2 size={12} className="animate-spin" /> Translating title...
-              </span>
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Author</label>
+            <input
+              name="author"
+              type="text"
+              value={form.author}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors"
+              placeholder="By John Doe"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Excerpt</label>
+            <textarea
+              name="excerpt"
+              value={form.excerpt}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors h-24 resize-none"
+              placeholder="Short summary..."
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Tags (comma separated)</label>
+            <input
+              name="tags"
+              type="text"
+              value={form.tags}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] focus:outline-none focus:border-[--primary-color] transition-colors"
+              placeholder="marketing, travel, blog"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Blog Images</label>
+            <div className="flex gap-2 mb-3">
+              <input
+                type="text"
+                value={imageUrlInput}
+                onChange={(e) => setImageUrlInput(e.target.value)}
+                placeholder="Paste image URL..."
+                className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 font-[300] text-sm focus:outline-none focus:border-[--primary-color] transition-colors"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (imageUrlInput.trim()) {
+                    setImages((prev) => [...prev, imageUrlInput.trim()]);
+                    setImageUrlInput("");
+                  }
+                }}
+                className="bg-gray-900 text-white font-[300] rounded-xl px-4 transition-all duration-300 hover:bg-gray-700 text-sm cursor-pointer"
+              >
+                Add
+              </button>
+              <button
+                type="button"
+                onClick={handleOpenModal}
+                className="flex items-center gap-2 bg-gray-900 text-white font-[300] rounded-xl py-2.5 px-5 transition-all duration-300 hover:bg-gray-700 text-sm"
+              >
+                <ImageIcon size={16} /> Browse ({images.length})
+              </button>
+            </div>
+
+            {images.length > 0 && (
+              <div className="mt-3 grid grid-cols-4 gap-2">
+                {images.map((url, idx) => (
+                  <div key={idx} className="relative group">
+                    <img
+                      src={url}
+                      alt={`Selected ${idx + 1}`}
+                      className="w-full h-24 object-cover rounded-lg border border-gray-200"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setImages((prev) => prev.filter((_, i) => i !== idx))}
+                      className="absolute top-1 right-1 w-6 h-6 bg-black/60 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
-          <input
-            name="slug"
-            type="text"
-            value={form.slug}
-            onChange={handleChange}
-            className="w-full input rounded-sm px-3 py-2 bg-gray-100 text-gray-500 border"
-            placeholder="Slug will appear here..."
-            required
-          />
-        </div>
 
-        {/* Author */}
-        <div>
-          <label className="block font-medium mb-1">Author</label>
-          <input
-            name="author"
-            type="text"
-            value={form.author}
-            onChange={handleChange}
-            className="w-full input rounded-sm px-3 py-2 border"
-            placeholder="By John Doe"
-          />
-        </div>
+          <input type="hidden" name="imagesJSON" value={JSON.stringify(images)} />
 
-        {/* Excerpt */}
-        <div>
-          <label className="block font-medium mb-1">Excerpt</label>
-          <textarea
-            name="excerpt"
-            value={form.excerpt}
-            onChange={handleChange}
-            className="w-full input rounded-sm px-3 py-2 h-24 border"
-            placeholder="Short summary..."
-          />
-        </div>
-
-        {/* Tags */}
-        <div>
-          <label className="block font-medium mb-1">Tags (comma separated)</label>
-          <input
-            name="tags"
-            type="text"
-            value={form.tags}
-            onChange={handleChange}
-            className="w-full input rounded-sm px-3 py-2 border"
-            placeholder="marketing, travel, blog"
-          />
-        </div>
-
-        {/* Image Picker with Modal */}
-        <div>
-          <label className="block font-medium mb-1">Blog Images</label>
-          <div className="flex gap-2 mb-2">
-            <button
-              type="button"
-              onClick={handleOpenModal}
-              className="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition flex items-center gap-2"
-            >
-              <ImageIcon size={16} /> Select Images ({images.length})
-            </button>
+          <div>
+            <label className="block text-gray-500 text-sm font-[300] mb-1.5">Article Contents</label>
+            <MarkdownEditor
+              name="contents"
+              value={form.contents}
+              onChange={(newValue) => setForm(prev => ({ ...prev, contents: newValue }))}
+              placeholder="Write your blog post here..."
+              minHeight="500px"
+              required
+            />
           </div>
 
-          {images.length > 0 && (
-            <div className="mt-3 grid grid-cols-4 gap-2">
-              {images.map((url, idx) => (
-                <img
-                  key={idx}
-                  src={url}
-                  alt={`Selected ${idx + 1}`}
-                  className="w-full h-24 object-cover rounded-lg border"
-                />
-              ))}
-            </div>
-          )}
-        </div>
+          <button
+            type="submit"
+            className="w-full bg-gray-900 text-white font-[300] rounded-xl py-3 px-6 transition-all duration-300 hover:bg-gray-700 cursor-pointer"
+          >
+            Create Blog
+          </button>
+        </form>
+      </div>
 
-        <input type="hidden" name="imagesJSON" value={JSON.stringify(images)} />
-
-        {/* Contents */}
-        <div>
-          <label className="block font-medium mb-1">Article Contents</label>
-          <MarkdownEditor
-            name="contents"
-            value={form.contents}
-            onChange={(newValue) => setForm(prev => ({ ...prev, contents: newValue }))}
-            placeholder="Write your blog post here..."
-            minHeight="500px"
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-5 py-2 rounded shadow hover:bg-blue-700"
-        >
-          Create Blog
-        </button>
-      </Form>
-
-      {/* IMAGE SELECTION MODAL */}
       {isOpen && (
         <section className="w-full h-screen z-[99] bg-black/30 fixed flex flex-col items-center justify-center top-0 left-0">
           <div className="bg-white rounded-xl w-full h-full p-5 max-w-[80vw] max-h-[80vh] flex flex-col">
             <div className="w-full flex items-center justify-between flex-shrink-0">
-              <div className="text-3xl font-bold">Select Blog Images</div>
+              <div className="text-2xl font-[300] text-gray-900">Select Blog Images</div>
               <button
                 onClick={handleCloseModal}
-                className="rounded-sm hover:bg-zinc-200 p-2"
+                className="rounded-sm hover:bg-zinc-100 p-2 cursor-pointer"
               >
-                <Minus size={24} className="text-zinc-500" />
+                <Minus size={24} className="text-zinc-400" />
               </button>
             </div>
 
-            <div className="flex justify-between items-center">
-              <div className="text-sm text-gray-500 mt-1">
+            <div className="flex justify-between items-center mt-2">
+              <div className="text-sm text-gray-400 font-[300]">
                 {selectedImages.length} selected
               </div>
-
               <div>
-                <input type="text" onChange={(e) => setSearchImage(e.target.value)} className="input rounded-sm" placeholder="Search" />
+                <input type="text" onChange={(e) => setSearchImage(e.target.value)} className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-sm" placeholder="Search" />
               </div>
             </div>
 
@@ -306,7 +307,7 @@ export default function BlogAddPage() {
                     className={`
                       relative cursor-pointer max-w-[150px] rounded-lg overflow-hidden
                       border-4 transition-all duration-150
-                      ${isSelected ? "border-blue-500" : "border-transparent"}
+                      ${isSelected ? "border-[--primary-color]" : "border-transparent"}
                     `}
                   >
                     <img
@@ -314,9 +315,8 @@ export default function BlogAddPage() {
                       alt={item.filename}
                       className="w-full h-full object-cover"
                     />
-
                     {isSelected && (
-                      <div className="absolute inset-0 bg-blue-500/30"></div>
+                      <div className="absolute inset-0 bg-[--primary-color]/20"></div>
                     )}
                   </div>
                 );
@@ -327,14 +327,14 @@ export default function BlogAddPage() {
               <button
                 type="button"
                 onClick={handleCloseModal}
-                className="px-4 py-2 text-gray-600 rounded-lg hover:bg-gray-100 transition mr-3"
+                className="px-4 py-2 text-gray-500 rounded-lg hover:bg-gray-100 transition mr-3 cursor-pointer font-[300]"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleApplyImages}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition cursor-pointer font-[300]"
               >
                 Apply Selection ({selectedImages.length})
               </button>

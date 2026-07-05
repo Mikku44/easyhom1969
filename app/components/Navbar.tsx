@@ -33,7 +33,7 @@ export default function Navbar() {
             />
 
             <header className={`w-full min-h-[58px] z-50 flex items-center flex-col
-             fixed  duration-300 ${isScrollDown ? "bg-black/80 backdrop-blur-2xl  shadow" : ""} `}>
+             fixed  duration-300 ${isScrollDown ? "bg-black  shadow" : ""} `}>
                 <div className={`${isScrollDown ? "h-0  border-white/0" : "h-[40px] bg-black/30 border-white/50"} duration-300 overflow-hidden 
                      text-white font-light  w-full border-b opacity-70 `}>
                     <div className="max-w-6xl mx-auto mt-1 py-1 px-4 gap-2 flex items-center justify-end text-xl ">
